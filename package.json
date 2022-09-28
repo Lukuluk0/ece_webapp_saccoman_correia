@@ -1,0 +1,20 @@
+{
+  "name": "ece_webapp_saccoman_correia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lukuluk0/ece_webapp_saccoman_correia.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lukuluk0/ece_webapp_saccoman_correia/issues"
+  },
+  "homepage": "https://github.com/Lukuluk0/ece_webapp_saccoman_correia#readme"
+}

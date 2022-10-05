@@ -18,8 +18,9 @@
 
  - git clone the repository
  - npm install
+ - npm run develop
 
-### Autors
+### Contributors
 ---
 
 Alexandre CORREIA 

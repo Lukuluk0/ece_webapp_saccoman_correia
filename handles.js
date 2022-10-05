@@ -1,84 +1,66 @@
-const http = require('http')
 const url = require('url')
 const qs = require('querystring')
 
-const mainPage = '<!DOCTYPE html>'+
-'<html>'+
-    '<head>'+
-        '<meta charset="utf-8" />'+
-        '<title>ECE AST</title>'+
-    '</head>'+
-    '<body>'+
-        'Hello guys'+
-    '</body>'+
-    
+const port = "8080"
+
+const profil = '<!DOCTYPE html>' +
+'<html>' +
+'    <head>' +
+'        <meta charset="utf-8" />' +
+'        <title>ECE AST</title>' +
+'    </head>' + 
+'    <body>' +
+'       <h1>Welcome in my profile page</h1>' +
+'       <p>My name is Alexandre Correia, I am 21 years old and I study at ECE in SI major</p>' +
+'       <p>My name is Lucas Saccoman, I am 21 years old and I study at ECE in SI major</p>'  +
+'    </body>' +
 '</html>'
 
-module.exports = {
-serverHandle : function (req, res) {
-    const route = url.parse(req.url)
-    const path = route.pathname 
-    const params = qs.parse(route.query)
-  
-    res.writeHead(200, {'Content-Type': 'text/html'});
-  
-if(params['name'] == "Lucas" ){
-    res.write('<!DOCTYPE html>'+
-    '<html>'+
-        '<head>'+
-            '<meta charset="utf-8" />'+
-            '<title>ECE AST</title>'+
-        '</head>'+
-        '<body>'+
-            'Hello Creator <3 lucas le plus beau'+
-        '</body>'+
-        
-    '</html>')
-} else if (params['name'] == "Alexandre"){
-    res.write('<!DOCTYPE html>'+
-    '<html>'+
-        '<head>'+
-            '<meta charset="utf-8" />'+
-            '<title>ECE AST</title>'+
-        '</head>'+
-        '<body>'+
-            'Hello Creator <3 alexandre le plus stylé'+
-        '</body>'+
-        
-    '</html>')
-}
-else if(params['name'] != null){
-    res.write('<!DOCTYPE html>'+
-    '<html>'+
-        '<head>'+
-            '<meta charset="utf-8" />'+
-            '<title>ECE AST</title>'+
-        '</head>'+
-        '<body>'+
-            'Hello '+ params['name']+
-        '</body>'+
-        
-    '</html>')
-}else if(path === '/'){
-    res.write('<!DOCTYPE html>'+
-    '<html>'+
-        '<head>'+
-            '<meta charset="utf-8" />'+
-            '<title>ECE AST</title>'+
-        '</head>'+
-        '<body>'+
-            '<a href="http://localhost:8080/?name=Lucas"> Lucas ?</a><br><a href="http://localhost:8080/?name=Alexandre">Alexandre ?</a>'+
-        '</body>'+
-        
-    '</html>')
-}else{
-    res.send(404);
-}
+const hello = '<!DOCTYPE html>' +
+'<html>' +
+'    <head>' +
+'        <meta charset="utf-8" />' +
+'        <title>ECE AST</title>' +
+'    </head>' + 
+'    <body>' +
+'       <h1>Voici comment hello fonctionne :</h1>' +
+'       <p>Pour accéder à la page hello, il suffit de rentrer hello et votre nom dans l adresse url de la manière suivante:<br><a href="http://localhost:8080/hello?name=John">localhost:8080/hello?name=your_name</a></p>'  +
+'       <p>Pour accéder à la page du créateur, appuyer sur ce lien:<br><a href="http://localhost:8080/hello?name=ALEXANDRE">localhost:8080/hello?name=ALEXANDRE</a></p>'  +
+'    </body>' +
+'</html>'
 
-    
-    
-    res.end();
-  
-  }
+const error = '<!DOCTYPE html>' +
+'<html>' +
+'    <head>' +
+'        <meta charset="utf-8" />' +
+'        <title></title>' +
+'    </head>' + 
+'    <body>' +
+'       <h1>ERROR 404</h1>' +
+'    </body>'  +
+'</html>'
+module.exports = {
+    serverHandle: (req, res) =>{
+      const route = url.parse(req.url)
+      const path = route.pathname 
+      const params = qs.parse(route.query)
+     
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      if (path === '/hello' && 'name' in params) {
+        if ((params['name']==='ALEXANDRE')||(params['name']==='LUCAS'))
+        {
+          res.write(profil)
+        } else {
+          res.write('Hello anonymous')
+        }
+      }
+      else if (path === '/')
+      {
+        res.write(hello);
+      }
+      else{
+
+      }  
+      res.end();
+     }
 }
-  //res.sendStatus(404);

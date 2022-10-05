@@ -1,7 +1,13 @@
 // Import a module
+const http = require('http')
 
-const handles = require('./handles')
+const {serverHandle} = require('./handles')
 
-  
-  const server = http.createServer(handles.serverHandle);
-  server.listen(8080)
+const port = "8080"
+
+const callback = () =>
+{
+    console.log("Server ir running at http::/localhost :" + port)
+}
+
+http.createServer(serverHandle).listen(port, callback)

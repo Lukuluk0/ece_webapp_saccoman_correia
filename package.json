@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Lukuluk0/ece_webapp_saccoman_correia/issues"
   },
-  "homepage": "https://github.com/Lukuluk0/ece_webapp_saccoman_correia#readme"
+  "homepage": "https://github.com/Lukuluk0/ece_webapp_saccoman_correia#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }

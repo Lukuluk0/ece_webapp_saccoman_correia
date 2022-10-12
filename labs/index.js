@@ -15,9 +15,9 @@
 const port = 3000
 const express = require('express')
 const app = express()
-const birds = require('./birds')
+const appli = require('./appli')
 
-app.use('/app', app)
+app.use('/appli', appli)
 
   
 app.listen(port, () => {

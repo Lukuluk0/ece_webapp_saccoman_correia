@@ -3,16 +3,6 @@ const qs = require('querystring')
 
 const port = "8080"
 
-const error = '<!DOCTYPE html>' +
-'<html>' +
-'    <head>' +
-'        <meta charset="utf-8" />' +
-'        <title></title>' +
-'    </head>' + 
-'    <body>' +
-'       <h1>ERROR 404</h1>' +
-'    </body>'  +
-'</html>'
 module.exports = {
     serverHandle: (req, res) =>{
       const route = url.parse(req.url)

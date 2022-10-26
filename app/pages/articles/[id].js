@@ -1,12 +1,13 @@
 import {useRouter} from 'next/router'
-import Navbar from '/component/Navbar'
+import Layout from '/components/Layout'
 
 const Article = () => {
     const router =useRouter();
     const {idArticle} = router.query;
     return <div>
-        <Navbar />
+        <Layout>
         Article {idArticle}
+        </Layout>
     </div>
 };
 

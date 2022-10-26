@@ -1,14 +1,14 @@
-import Navbar from '../component/Navbar'
+import Layout from '../components/Layout'
 
 const Articles = () => {
     return <div>
-        <Navbar />
+        <Layout>
             <ol>
                 <li>Article 1</li><p className="italic font-bold">loremipsum</p>
                 <li>Article 2</li><p className="italic font-bold">loremipsum</p>
                 <li>Article 3</li><p className="italic font-bold">loremipsum</p>
             </ol>
-      
+            </Layout>
     </div>
 }
 

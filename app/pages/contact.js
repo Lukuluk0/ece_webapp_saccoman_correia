@@ -1,10 +1,12 @@
-import Navbar from '../component/Navbar'
+import Layout from '../components/Layout'
 
 
 const Contact = () => {
-    return <div> <Navbar />
-    <br></br>
-        0665131392 ;D appelle moi</div>
+    return <div> <Layout>
+        <br></br>
+        0665131392 ;D appelle moi
+    </Layout>
+    </div>
 }
 
 export default Contact 

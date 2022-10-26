@@ -1,13 +1,13 @@
 import Link from 'next/link'
-
-import Navbar from '../component/Navbar'
+import Layout from '../components/Layout'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div >
      {" "}
-     <Navbar />
+     <Layout>
      <h1>Home page</h1>
+     </Layout>
      
     </div>
   )

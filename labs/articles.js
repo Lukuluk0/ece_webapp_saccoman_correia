@@ -48,8 +48,8 @@ router.get('/', (req, res, next) => {
 router.get('/:articleId', (req, res, next) => {
   res.write("Voici l'article correspondant a l'ID " + req.params.articleId + "\n\n");
   const searchId = req.params.articleId;
-  const article = db.articles.find( article => article.id === searchId)
-  res.write("Titre de l'article: " + article.title + "\n")
+  const article = db.articles.find( article => article.id === searchId);
+  res.write("Titre de l'article: " + article.title + "\n");
   res.write("Content: " + article.content + "\n");
   res.write("Date d'achat" + article.date + "\n") ;
   res.write("Voici l'auteur: " + article.author + "\n\n");

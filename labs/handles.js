@@ -1,6 +1,5 @@
 const url = require('url')
 const qs = require('querystring')
-
 const port = "8080"
 
 module.exports = {
@@ -13,19 +12,33 @@ module.exports = {
       if (path === '/hello' && 'name' in params) {
         if ((params['name']==='ALEXANDRE')||(params['name']==='LUCAS'))
         {
-          res.write(profil)
+          res.write("a")
         } else {
           res.write('Hello anonymous')
         }
       }
       else if (path === '/')
       {
-        res.write(hello);
+        res.write("b");
+        
       }
+      else if (path === '/about') {
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        try{
+          const about = require('./content/about')
+          res.write(about.title + "\n");
+          res.write(about.content+ "\n");
+          res.write(about.author+ "\n");
+          res.write(about.date+ "\n");
+        }
+        catch
+        {
+          console.log("le fichier JSON n'existe pas ");
+        }
+      }
+
       else{
-        res.status(404).send('Page introuvable') ;
 }
-      
       res.end();
      }
 }

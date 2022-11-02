@@ -12,14 +12,14 @@ module.exports = {
       if (path === '/hello' && 'name' in params) {
         if ((params['name']==='ALEXANDRE')||(params['name']==='LUCAS'))
         {
-          res.write("a")
+          res.sendFile(path.join(__dirname, '/profil.html'))
         } else {
           res.write('Hello anonymous')
         }
       }
       else if (path === '/')
       {
-        res.write("b");
+        res.sendFile(path.join(__dirname, '/hello.html'))
         
       }
       else if (path === '/about') {

@@ -23,8 +23,9 @@ module.exports = {
         res.write(hello);
       }
       else{
-
-      }  
+        res.status(404).send('Page introuvable') ;
+}
+      
       res.end();
      }
 }

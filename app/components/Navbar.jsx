@@ -1,32 +1,38 @@
 import Link from "next/link"
+import Image from 'next/image'
+import mypic from '../assets/logo.png'
 
 const Navbar =()=>{
     return <div>
-      < nav className = "container-fluid flex justify-between py-8 px-8 mx-auto bg-white" > 
+      < nav className = "container-fluid flex justify-between py-5 px-5 mx-auto bg-vert-mousse-f" > 
    < div className = "flex items-center" >  
-    < div className = " text-2xl font-medium text-blue-500" >LOGO</ div > 
+    < Image src={mypic}
+    width="50px"
+    height="50px"
+    alt="my-blog"
+    /> 
   </ div > 
   <div className=" items-center space-x-20 lg:flex">
     <Link href="/">
-        <a className = "text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Home </a>
+        <h3 className = "text-white rounded md:hover:text-olivine text-xl">Home </h3>
       </Link>
     <Link href="/about">
-        <a>About Us </a>
+        <h3 className = "text-white rounded md:hover:text-olivine text-xl ">About Us </h3>
       </Link>
   
       <Link href="/articles">
-        <a>Articles </a>
+        <h3 className = "text-white rounded md:hover:text-olivine text-xl ">Articles </h3>
       </Link>
    
       <Link href="/contact">
-        <a>Contactez nous</a>
+        <h3 className = "text-white rounded md:hover:text-olivine text-xl">Contactez nous</h3>
       </Link>
       </div>
       <div className="flex items-center space-x-4">
-    <div className="px-4 py-2 text-blue-100 bg-blue-800 rounded-md">
+    <div className="inline-block border border-algues-metal bg-algues-metal hover:bg-olivine rounded py-2 px-4 hover:border-olivine text-white text-xl">
       Sign in
     </div>
-    <div className="px-4 py-2 text-gray-200 bg-gray-400 rounded-md">
+    <div className="inline-block border border-violette-esp bg-violette-esp rounded hover:border-olivine text-white text-xl hover:bg-olivine py-2 px-4">
       Sign up
     </div>
   </div>

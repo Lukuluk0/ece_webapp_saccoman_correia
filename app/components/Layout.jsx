@@ -1,12 +1,11 @@
 import Navbar from './Navbar'
+import Footer from './Footer'
 
 function Layout({children}){
     return <div>
-        <header>
             <Navbar />
-
-        </header>
         <main className="">{children}</main>
+        <Footer/>
     </div>
 }
 

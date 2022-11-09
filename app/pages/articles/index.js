@@ -1,14 +1,19 @@
 import db from '../../assets/articles'
+import Layout from '../../components/Layout'
+import Link from "next/link"
 
+export default function Articles({posts}) {
 
-export default function Articles({props}) {
     return <div> 
+      <Layout>
         <ul>
-      {props.posts.map((articles) => (
-        <li>{props.posts.title}</li>
+      {posts.map((post) => (
+        <Link href="articles/post.id">
+        <li>{post.title}</li>
+        </Link>
       ))}
     </ul>
-
+    </Layout>
     </div>
   }
 

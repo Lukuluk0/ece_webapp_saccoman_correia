@@ -1,14 +1,29 @@
-import {useRouter} from 'next/router'
+import db from '../../assets/articles'
 import Layout from '/components/Layout'
 
 const Article = () => {
-    const router =useRouter();
-    const {idArticle} = router.query;
+    console.log(paths.params.id)
     return <div>
         <Layout>
-        Article {idArticle}
         </Layout>
     </div>
 };
 
-export default Article;
+export async function getStaticPaths() {
+
+    const posts = db.articles
+  
+    const paths = posts.map((post) => ({
+      params: { id: post.id },
+    }))
+  
+    return { paths, fallback: false }
+  }
+  
+  export async function getStaticProps({ params }) {
+  
+   
+    return { props: { post : db.articles} }
+  }
+  
+export default Article

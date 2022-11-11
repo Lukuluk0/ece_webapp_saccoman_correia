@@ -3,12 +3,11 @@ import Layout from '../../components/Layout'
 import Link from "next/link"
 
 export default function Articles({posts}) {
-
     return <div> 
       <Layout>
         <ul>
       {posts.map((post) => (
-        <Link href="articles/post.id">
+        <Link href={'/articles/' + post.id}>
         <li>{post.title}</li>
         </Link>
       ))}

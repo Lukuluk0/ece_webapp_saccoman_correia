@@ -1,6 +1,6 @@
 import db from '../../assets/articles'
 import Layout from '/components/Layout'
-
+// pour valider SSG faire un npm run build
 const Article = (post) => {
 
     return <div>

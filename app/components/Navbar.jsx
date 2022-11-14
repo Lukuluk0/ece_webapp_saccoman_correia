@@ -1,8 +1,19 @@
 import Link from "next/link"
 import Image from 'next/image'
 import mypic from '../assets/logo.png'
+import { useEffect, useState } from "react"
 
 const Navbar =()=>{
+  fetch('http://localhost:3000/api/profile')
+  .then(res => console.log(res))
+  let [user,setuser] = useState(null)
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/api/profile`)
+         .then(profile => profile.json())
+         .then(data => setuser(data.message))
+  }, [])
+
     return <div>
       < nav className = "container-fluid flex justify-between py-5 px-5 mx-auto bg-vert-mousse-f" > 
    < div className = "flex items-center" >  
@@ -33,7 +44,7 @@ const Navbar =()=>{
       Sign in
     </div>
     <div className="inline-block border border-violette-esp bg-violette-esp rounded hover:border-olivine text-white text-xl hover:bg-olivine py-2 px-4">
-      Sign up
+      {user && <p>user</p>}
     </div>
   </div>
       </nav>

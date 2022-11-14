@@ -7,9 +7,11 @@ export default function Articles({posts}) {
       <Layout>
         <ul>
       {posts.map((post) => (
-        <Link href={'/articles/' + post.id}>
+        <div key={post.id}>
+          <Link href={'/articles/' + post.id}>
         <li>{post.title}</li>
         </Link>
+        </div>
       ))}
     </ul>
     </Layout>

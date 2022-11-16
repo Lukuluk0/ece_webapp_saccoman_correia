@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
 const MyForm = function() {
-    const [login, setlogin] = useState("b");
+    const [login, setlogin] = useState("");
     const [password, setpassword] = useState("");
     const onSubmit = function(event) {
       event.preventDefault()
       const data = new FormData(event.target)
       setlogin(data.get('login'))
       setpassword(data.get('password'))
-      console.log(login)
+      console.log(login,password)
     }
     return (
       <form onSubmit={onSubmit}>

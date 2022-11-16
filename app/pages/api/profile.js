@@ -5,7 +5,6 @@ const user = {username: 'alexcmr',
 
 export default function profile(req, res) {
     res.status(200).json(user)
-    console.log(user)
     res.end()
   }
   

@@ -1,14 +1,12 @@
 import db from '../../assets/articles'
 import Layout from '/components/Layout'
+import Infoarticle from '/components/Infoarticle'
 // pour valider SSG faire un npm run build
-const Article = (post) => {
+const Article = ({post}) => {
 
     return <div>
         <Layout>
-          <ul>
-            <li>{post.post.id}</li>
-            <li>{post.post.title}</li>
-          </ul>
+          <Infoarticle id={post.id} title={post.title}/>;
         </Layout>
     </div>
 };

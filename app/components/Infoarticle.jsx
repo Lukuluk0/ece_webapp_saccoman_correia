@@ -1,11 +1,12 @@
-function Infoarticle({id,title}) {
+function Infoarticle({posts}) {
+  const [posted] = posts
     return <div>
       <ul>
         <li>
-          <h3>Voici l'id de l'article: {id}</h3>
+          <h3>Voici l'id de l'article: {posted.id}</h3>
         </li>
         <li>
-          <h3>Voici le titre de l'article: {title}</h3>
+          <h3>Voici le titre de l'article: {posted.itle}</h3>
         </li>
       </ul>
     </div>

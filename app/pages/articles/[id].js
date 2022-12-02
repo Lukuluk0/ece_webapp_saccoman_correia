@@ -3,10 +3,9 @@ import Layout from '/components/Layout'
 import Infoarticle from '/components/Infoarticle'
 // pour valider SSG faire un npm run build
 const Article = ({post}) => {
-
     return <div>
         <Layout>
-          <Infoarticle id={post.id} title={post.title}/>;
+          <Infoarticle posts={post}/>;
         </Layout>
     </div>
 };
@@ -24,7 +23,7 @@ export async function getStaticPaths() {
   
   
   export async function getStaticProps({params}) {
-    return { props: { post : db.articles.find(articles => articles.id === params.id)} }
+    return { props: { post : db.articles.filter(articles => articles.id === params.id)} }
   }
 
 export default Article

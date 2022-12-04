@@ -1,8 +1,11 @@
 import db from '../../assets/articles'
 import Layout from '/components/Layout'
-import Infoarticle from '/components/Infoarticle'
+import {Infoarticle} from '/components/Infoarticle'
+import { useRouter } from "next/router";
 // pour valider SSG faire un npm run build
 const Article = ({post}) => {
+  const router = useRouter();
+    console.log(router);
     return <div>
         <Layout>
           <Infoarticle posts={post}/>;

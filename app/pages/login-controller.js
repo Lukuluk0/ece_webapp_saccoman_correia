@@ -25,3 +25,5 @@ const MyForm = function() {
     </form>
   )
 }
+
+export default MyForm

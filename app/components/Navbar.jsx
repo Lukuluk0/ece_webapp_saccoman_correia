@@ -44,7 +44,7 @@ const Navbar =()=>{
       Sign in
     </div>
     <div className="inline-block border border-violette-esp bg-violette-esp rounded hover:border-olivine text-white text-xl hover:bg-olivine py-2 px-4">
-      {user && <p>user</p>}
+      
     </div>
   </div>
       </nav>

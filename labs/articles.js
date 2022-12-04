@@ -1,8 +1,7 @@
 const express = require('express')
-const { endianness } = require('os')
 const router = express.Router()
 const path = require('path')
-const test ="auchan"
+
 
 let db = {
     articles: [

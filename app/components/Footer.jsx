@@ -1,23 +1,33 @@
 import Link from "next/link"
 import Image from 'next/image'
-import mypic from '../assets/logo.png'
+import mypic from '../assets/ece_icon.png'
 
 const Footer =() =>
 {
     return <div>
-        <footer className = " inset-x-0 py-2 px-2 mx-auto bg-vert-mousse-f  fixed bottom-0" >
-            < div className = "grid grid-cols-4 gap-4">
-                <div className="col-span-2 items-center"> <Image src={mypic}
-                width="50px"
-                height="50px"
-                alt="my-blog"/></div>
-                <div className="text-xl text-white items-center">Privacy Policy</div>
-                <div className="text-xl text-white items-center">Terms and Conditions</div>
-                <div className="col-span-3 items-center text-2xl text-white">© 2022 Copyright:</div>
-                <div className="text-xl text-white">GITHUB</div>
-            </div>
-        </footer>
-            </div>
+        <div className="mx-auto p-4 bg-bleu md:flex md:items-center md:justify-between dark:bg-gray-800">
+        <ul className="flex flex-wrap items-center mt-3 text text-white dark:text-white sm:mt-0">
+        <li>
+            <Link href='/about'>
+            <a className="mr-4 hover:text-black md:mr-6 ">About</a>
+            </Link>
+        </li>
+        <li>
+            <Link href='/contact'>
+            <a className="mr-4 hover:text-black md:mr-6">Contact Us</a>
+            </Link>
+        </li>
+        <li>
+            <a className="mr-4 hover:text-black md:mr-6">Privacy Policy</a>
+        </li>
+        <li>
+            <a className="hover:text-black">Github</a>
+        </li>
+    </ul>
+    <a className="text-white text-center dark:white">© 2022 Flowbite™. All Rights Reserved.
+    </a>
+</div>
+</div>
 }
 
 export default Footer

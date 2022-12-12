@@ -5,7 +5,7 @@ function Listarticle(props) {
     return <ul>
     {posted.map((post) => (
       <div key={post.id}>
-        <Link href={'/articles/' + post.id}>
+        <Link href={'/projects/' + post.id}>
       <li>{post.title}</li>
       </Link>
       </div>
@@ -14,3 +14,4 @@ function Listarticle(props) {
 }
 
 export default Listarticle
+

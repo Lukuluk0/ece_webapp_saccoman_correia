@@ -2,9 +2,9 @@ import Link from 'next/link'
 import Layout from '../components/Layout'
 
 export default function Home() {
-  //regler le padding général
+  //regler le padding général et responsive menu hamburger
   return (
-    <div >
+   
      <Layout>
      <main>
         <div className="relative px-6">
@@ -51,7 +51,7 @@ export default function Home() {
         </div>
       </main>
      </Layout>
-    </div>
+   
   )
 }
 

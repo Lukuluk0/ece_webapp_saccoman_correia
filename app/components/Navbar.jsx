@@ -1,7 +1,8 @@
 import Link from "next/link"
 import Image from 'next/image'
 import mypic from '../assets/ece_icon.png'
-import { useEffect, useState } from "react"
+import Login from './Login'
+
 import { INTERNALS } from "next/dist/server/web/spec-extension/request"
 
 const Navbar =()=>{
@@ -43,13 +44,9 @@ const Navbar =()=>{
         </li>
         </div>
       ))
-    }<Link href='/login'>
-     <div className="text-white inline-block border border-white hover:white rounded py-1 px-2 hover:border-black hover:bg-white hover:text-black text-l">
-     Log in
-    </div>
-    </Link>
+    }
+    <Login/>
       </ul>
- 
       </nav>
       </div>
 }

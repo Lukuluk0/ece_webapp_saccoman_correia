@@ -14,7 +14,7 @@ module.exports = {
     DEFAULT: '3px'
   },
     },
-  },
+  }, 
   plugins: [
     require( 'tailwindcss-font-inter'),
     require('@tailwindcss/typography'),

@@ -1,11 +1,16 @@
 import Link from 'next/link'
 import Layout from '../components/Layout'
+import Head from'next/head'
 
 export default function Home() {
   //regler le padding général et responsive menu hamburger
   return (
-   
      <Layout>
+      <Head>
+        <title>WebTech - Home</title>
+        <meta name="description" content="WebTech home page" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
      <main>
         <div className="relative px-6">
           <div className="mx-auto max-w-4xl"> 

@@ -1,5 +1,5 @@
-
-import Infoarticle from '/components/Infoarticle'
+import Project_action from '../../components/Project_action.jsx'
+import Infoarticle from '../../components/Infoarticle'
 import Layout from '../../components/Layout'
 import { supabase } from '../api/supabase'
 
@@ -8,7 +8,8 @@ import { supabase } from '../api/supabase'
 const Project = ({project}) => {
     return <div>
         <Layout>
-          <Infoarticle pproject={project}/>;
+          <Infoarticle pproject={project}/>
+          <Project_action author={project.creator_id}></Project_action>
         </Layout>
     </div>
 };

@@ -26,7 +26,7 @@ const Footer =() =>
             </li>
     </ul>
     <span className="text-white  dark:white text-l ">
-    <a>© 2022 Flowbite™. </a>
+    <a>© 2022 Webtech™. </a>
     <a className="md:visible invisible">All Rights Reserved.</a>
     </span>
     </div>

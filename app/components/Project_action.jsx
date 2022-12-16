@@ -1,19 +1,24 @@
 import UserContext from './UserContext'
-import { useContext } from 'react'
+import { useContext,useState } from 'react'
 import Link from "next/link"
+import { supabase } from '../pages/api/supabase'
+import Router from 'next/router'
+import { useRouter } from 'next/router'
 
 const Project_action = (props) => 
 {
+    const router = useRouter()
     const { user } = useContext(UserContext)
 
-    function Delete()
-    {
-        
+    const Delete = async function (e) {
+        e.preventDefault()
+        const {error} = await supabase
+            .from('projects')
+            .delete()
+            .eq('id',props.project_id)
+            router.push("/projects/")
     }
-    function Update()
-    {
-
-    }
+    
     
     if((user === undefined))
     {
@@ -30,13 +35,13 @@ const Project_action = (props) =>
     }
       
         return <div className="mt-12 flex gap-x-4 justify-center">
-        <Link href ={{pathname:'/projects/update',query:'id='+props.project_info.id}}>
+        <Link href ={{pathname:'/projects/update',query:'id='+props.project_id}}>
         <button className="inline-block rounded-lg bg-bleu px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-bleu hover:bg-indigo-500 hover:ring-indigo-500"
         >
           Update the project
         </button>
         </Link>
-        <button 
+        <button onClick = {Delete}
         className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-2 ring-gray-900/10 hover:ring-gray-900/30"
 >
           Delete the project

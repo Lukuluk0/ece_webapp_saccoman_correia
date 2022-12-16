@@ -27,7 +27,7 @@ const Update = ({projects}) => {
   
   const onSubmit = async function (e) {
     e.preventDefault()
-    if (Object.keys(data).length === 0) {
+    /*if (Object.keys(data).length === 0) {
       setMessage(
         <div>
           <h2 className="text-center mt-3">Confirmation</h2>
@@ -35,10 +35,10 @@ const Update = ({projects}) => {
         </div>
       )
     }
-    else{
-      const feature=data.features.split(";")
-    const language=data.languages.split(";")
-    const skill=data.skills.split(";")
+    else{*/
+      const feature=data.features.toString().split(",")
+    const language=data.languages.toString().split(",")
+    const skill=data.skills.toString().split(",")
     const {error} = await supabase
     .from('projects')
     .update({title:data.title, description:data.description, features: feature, skills: skill, languages: language, pictures:["",""]})
@@ -55,7 +55,7 @@ const Update = ({projects}) => {
           <p>Thank you for contribution</p>
         </div>
       )
-    }
+    //}
     }
     
   }
@@ -74,6 +74,7 @@ const Update = ({projects}) => {
                   </label>
                   <div className="mt-1 ">
                     <input
+                    id='title'
                       type="text"
                       name="title"
                       value={ !(data) ?data.my_value:data.title}
@@ -121,7 +122,7 @@ const Update = ({projects}) => {
                   />
                 </div>
                 <p className="mt-2 text-sm text-gray-500">
-                  Enumerate features, separate each with a semicolon !
+                  Enumerate features, separate each with a comma !
                 </p>
               </div>
               <div>
@@ -140,7 +141,7 @@ const Update = ({projects}) => {
                   />
                 </div>
                 <p className="mt-2 text-sm text-gray-500">
-                  Enumerate skills, separate each with a semicolon !
+                  Enumerate skills, separate each with a comma !
                 </p>
               </div>
               <div className="grid grid-cols-3 gap-6">
@@ -160,7 +161,7 @@ const Update = ({projects}) => {
                     />
                   </div>
                   <p className="mt-2 text-sm text-gray-500">
-                    Enumerate, separate each with a semicolon !
+                    Enumerate, separate each with a comma !
                   </p>
                 </div>
               </div>
@@ -169,7 +170,7 @@ const Update = ({projects}) => {
             <div className="bg-gray-50 px-4 py-3 grid grid-cols-2 sm:px-6 md:gap-x-60 gap-x-10">
               <button
                 className="inline-flex justify-center rounded-md border border-transparent bg-bleu py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                onClick={() => setData({})}
+                onClick={() => router.push('/projects/')}
               >
                 Cancel this form
               </button>

@@ -9,7 +9,7 @@ const Project = ({project}) => {
     return <div>
         <Layout>
           <Infoarticle pproject={project}/>
-          <Project_action author={project.creator_id} project_info={project}></Project_action>
+          <Project_action author={project.creator_id} project_id={project.id}></Project_action>
         </Layout>
     </div>
 };

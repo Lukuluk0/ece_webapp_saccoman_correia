@@ -14,7 +14,7 @@ export function UserContextProvider({
   const [loading, setLoading] = useState(true)
   useEffect(function() {
     if (supabaseUser) {
-      setUser(supabaseUser)
+      setUser({...supabaseUser})//,theme:"light"
       setLoading(false)
     } 
   }, [supabaseUser])

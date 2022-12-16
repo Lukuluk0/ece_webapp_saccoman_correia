@@ -44,7 +44,7 @@ export default function Home() {
                   </a>
                   </Link>
                   <Link href='/contact'>
-                  <a className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-2 ring-gray-900/10 hover:ring-gray-900/30">
+                  <a className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-2 ring-gray-900/10 hover:ring-gray-900/30 dark:bg-gray-800 dark:text-gray-100">
                     Contact us
                     <span className="text-black" aria-hidden="true">&rarr;</span>
                   </a>

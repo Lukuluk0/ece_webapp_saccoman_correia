@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 function Infoarticle({pproject}) {
       return ( 
       <div className="relative px-6">
@@ -12,10 +14,12 @@ function Infoarticle({pproject}) {
               </p>
             </div>
             <div className=" pt-6 px-10 flex grid grid-rows-3 grid-flow-col gap-4 justify-between">
-            <div class="row-span-3 ...">
-              <img 
-              src={pproject.pictures[0]}
-              alt="..."/>
+            <div class="row-span-3">
+              <Image 
+              src={pproject.pictures}
+              alt="..."
+              width={500}
+              height={250}/>
             </div>
             <div className="row-span-2 col-span-2">
               <div className="grid grid-cols-2 gap-4">

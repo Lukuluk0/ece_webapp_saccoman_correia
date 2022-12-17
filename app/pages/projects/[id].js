@@ -2,6 +2,7 @@ import Project_action from '../../components/Project_action.jsx'
 import Infoarticle from '../../components/Infoarticle'
 import Layout from '../../components/Layout'
 import { supabase } from '../api/supabase'
+import AddComment from '../../components/AddComment'
 
 
 // pour valider SSG faire un npm run build
@@ -9,7 +10,8 @@ const Project = ({project}) => {
     return <div>
         <Layout>
           <Infoarticle pproject={project}/>
-          <Project_action author={project.creator_id} project_id={project.id}></Project_action>
+          <Project_action author={project.creator_id} pid={project.id}></Project_action>
+          <AddComment pid={project.id}/>
         </Layout>
     </div>
 };

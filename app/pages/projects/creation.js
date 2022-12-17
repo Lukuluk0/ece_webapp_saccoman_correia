@@ -9,10 +9,11 @@ const Creation = () => {
   const router = useRouter()
   const supabase = useSupabaseClient()
   const [datas, setDatas] = useState({})
-  const [file, setFile] = useState([])
+  const [file, setFile] = useState(null)
   const [message, setMessage] = useState(null)
   const { user } = useContext(UserContext)
   const onSubmit = async function (e) {
+    
   e.preventDefault()
   if (Object.keys(datas).length === 0) {
     setMessage(
@@ -23,29 +24,14 @@ const Creation = () => {
       )
     }
     else{
-      const tpic= datas.titlepic + ".png"
-      const { error1 } = await supabase
-      .storage
-      .from('avatars')
-      .upload(tpic, file, {
-        cacheControl: '3600',
-        upsert: false
-      })
-      if(error1){
-      setMessage(<div>
-        <h2 className="text-center mt-3">Warning</h2>
-        <p>An error occured, try again please or make sure the title of your uploaded picture is proper</p>
-      </div>)
-    }else{
-    const { data } = await supabase
-      .storage
-      .from('avatars')
-      .getPublicUrl(tpic)
-    const feature=datas.features.split(";")
+      if(file === null)
+      {
+        const url = "https://asjviolucgyqjhebdilt.supabase.co/storage/v1/object/public/avatars/imagedefault.png?"
+        const feature=datas.features.split(";")
     const skill=datas.skills.split(";")
     const {error2} = await supabase
     .from('projects')
-    .insert({creator_id: user.id, title:datas.title, description:datas.description, features: feature, skills: skill, languages: language, pictures: data.publicUrl})
+    .insert({creator_id: user.id, title:datas.title, description:datas.description, features: feature, skills: skill, languages: datas.language, pictures: url})
     if(error2){
       setMessage(<div>
         <h2 className="text-center mt-3">Warning</h2>
@@ -59,9 +45,50 @@ const Creation = () => {
         </div>
       )
     }
+      }
+      else{
+      const tpic= datas.titlepic + ".png"
+      const { error1 } = await supabase
+      .storage
+      .from('avatars')
+      .upload(tpic, file, {
+        cacheControl: '3600',
+        upsert: false
+      })
+      if(error1){
+      setMessage(<div>
+        <h2 className="text-center mt-3">Warning</h2>
+        <p>An error occured, try again please or make sure the title of your uploaded picture is proper</p>
+      </div>)
+       const { data } = await supabase
+       .storage
+       .from('avatars')
+       .getPublicUrl(tpic)
+       const feature=datas.features.split(";")
+    const skill=datas.skills.split(";")
+    const url=data.publicUrl
+    const {error2} = await supabase
+    .from('projects')
+    .insert({creator_id: user.id, title:datas.title, description:datas.description, features: feature, skills: skill, languages: datas.language, pictures: url})
+    if(error2){
+      setMessage(<div>
+        <h2 className="text-center mt-3">Warning</h2>
+        <p>An error occured, try again please or make sure the contained is proper</p>
+      </div>)
+    }else{
+      setMessage(
+        <div>
+          <h2 className="text-center mt-3">Confirmation</h2>
+          <p>Thank you for your contribution</p>
+        </div>
+      )
+    }
+      }
+    }
   }
+  
 } 
-  }
+  
   return (
     <Layout>
       <h2 className="text-center text-xl font-bold">Publicate a new project</h2>

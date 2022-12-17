@@ -2,7 +2,7 @@ import UserContext from './UserContext'
 import { useContext,useState } from 'react'
 import Link from "next/link"
 import { supabase } from '../pages/api/supabase'
-import Router from 'next/router'
+
 import { useRouter } from 'next/router'
 
 const Project_action = (props) => 
@@ -15,21 +15,21 @@ const Project_action = (props) =>
         const {error} = await supabase
             .from('projects')
             .delete()
-            .eq('id',props.project_id)
+            .eq('id',pid)
             router.push("/projects/")
     }
     
     
     if((user === undefined))
     {
-        return <div>
+        return <div className="text-center">
             <p>If you want to discuss about this project, you can post a comment</p>
         </div>
         
     } 
     if(props.author !== user.id)
     {
-        return <div>
+        return <div className="text-center">
             <p>If you want to discuss about this project, you can post a comment</p>
         </div>
     }

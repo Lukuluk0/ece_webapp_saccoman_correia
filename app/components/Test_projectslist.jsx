@@ -16,6 +16,7 @@ import Image from 'next/image'
                     <Image
                       src={project.pictures}
                       layout='fill'
+                      alt="...."
                     />
                   </div>
                   </Link>

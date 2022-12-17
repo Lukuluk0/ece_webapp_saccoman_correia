@@ -26,12 +26,16 @@ function Infoarticle({pproject}) {
                   <div>
                     <ul>Features</ul>
                     {pproject.features.map((feature) => (
-                    <li>{feature}</li>))}
+                       <div key={pproject.id} className="group relative">
+                    <li>{feature}</li>
+                    </div>))}
                   </div>
                   <div>
                     <ul>Skills</ul>
                     {pproject.skills.map((skill) => (
-                    <li>{skill}</li>))}
+                      <div key={pproject.id} className="group relative">
+                    <li>{skill}</li>
+                    </div>))}
                   </div>
               </div>
             </div>

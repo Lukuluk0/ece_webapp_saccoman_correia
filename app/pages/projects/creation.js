@@ -208,7 +208,7 @@ const Creation = () => {
                     />
                   </div>
                   <p className="mt-2 text-sm text-gray-500">
-                    Give a name, don't put any forbidden characters like *,' or space !
+                    Give a name, dont put any forbidden characters like * or space !
                   </p>
                 </div>
               </div>

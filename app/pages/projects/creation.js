@@ -23,9 +23,8 @@ const Creation = () => {
         </div>
       )
     }
-    else{
-      if(file === null)
-      {
+    if(file === null)
+    {
         const url = "https://asjviolucgyqjhebdilt.supabase.co/storage/v1/object/public/avatars/imagedefault.png?"
         const feature=datas.features.split(";")
     const skill=datas.skills.split(";")
@@ -56,17 +55,19 @@ const Creation = () => {
         upsert: false
       })
       if(error1){
-      setMessage(<div>
-        <h2 className="text-center mt-3">Warning</h2>
-        <p>An error occured, try again please or make sure the title of your uploaded picture is proper</p>
-      </div>)
-       const { data } = await supabase
-       .storage
-       .from('avatars')
-       .getPublicUrl(tpic)
+        setMessage(<div>
+          <h2 className="text-center mt-3">Warning</h2>
+          <p>An error occured, try again please or make sure the title of your uploaded picture is proper</p>
+        </div>)
+      }
+         const { data } = await supabase
+         .storage
+         .from('avatars')
+         .getPublicUrl(tpic)
+         const url=data.publicUrl
        const feature=datas.features.split(";")
     const skill=datas.skills.split(";")
-    const url=data.publicUrl
+   
     const {error2} = await supabase
     .from('projects')
     .insert({creator_id: user.id, title:datas.title, description:datas.description, features: feature, skills: skill, languages: datas.language, pictures: url})
@@ -83,8 +84,7 @@ const Creation = () => {
         </div>
       )
     }
-      }
-    }
+      
   }
   
 } 

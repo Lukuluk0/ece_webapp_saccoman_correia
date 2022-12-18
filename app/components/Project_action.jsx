@@ -15,7 +15,7 @@ const Project_action = (props) =>
         const {error} = await supabase
             .from('projects')
             .delete()
-            .eq('id',pid)
+            .eq('id',props.pid)
             router.push("/projects/")
     }
     
@@ -35,7 +35,7 @@ const Project_action = (props) =>
     }
       
         return <div className="mt-12 flex gap-x-4 justify-center">
-        <Link href ={{pathname:'/projects/update',query:'id='+props.project_id}}>
+        <Link href ={{pathname:'/projects/update',query:'id='+props.pid}}>
         <button className="inline-block rounded-lg bg-bleu px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-bleu hover:bg-indigo-500 hover:ring-indigo-500"
         >
           Update the project

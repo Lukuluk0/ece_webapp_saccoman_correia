@@ -3,10 +3,35 @@ import { useContext, useEffect } from 'react'
 import Head from 'next/head'
 import Layout from '../components/Layout.jsx'
 import UserContext from '../components/UserContext'
+import { useTheme } from "next-themes"
 
 export default function Contact() {
   const { user, logout, loading } = useContext(UserContext)
   const router = useRouter()
+  const r = document.querySelector(':root')
+
+  const {systemTheme,theme,setTheme} = useTheme()
+  const renderThemeChanger =() =>{
+    const currentTheme = theme === 'system' ? systemTheme:theme
+
+    if(currentTheme == 'dark'){
+      return <><input value='Light' type="button" className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-2 ring-gray-900/10 hover:ring-gray-900/30 dark:bg-gray-800 dark:text-gray-100"  onClick={() => setTheme('light')}/><br/>
+       </>
+       //
+    }else{
+      return <><input value='Blue' type="button" className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-2 ring-gray-900/10 hover:ring-gray-900/30 dark:bg-gray-800 dark:text-gray-100"  onClick={changeCSSblue}/><br/>
+       <input value='Pink' type="button" className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-2 ring-gray-900/10 hover:ring-gray-900/30 dark:bg-gray-800 dark:text-gray-100"  onClick={changeCSSpink}/></>    }
+       //
+  }
+
+  const changeCSSpink= () => {
+    r.style.setProperty('--bleu', '#ff49db')
+  }
+  const changeCSSblue= () => {
+    r.style.setProperty('--bleu', '#5952CA')
+  }
+
+  
   useEffect(() => {
     if (!(user || loading)) {
       router.push('/login')
@@ -33,6 +58,12 @@ export default function Contact() {
           >
             Logout
           </button>
+
+          <br/>
+        Select a color
+        <br/>
+        {renderThemeChanger()}
+
           <pre><code>{JSON.stringify(user, null, 2)}</code></pre>
         </>
       }

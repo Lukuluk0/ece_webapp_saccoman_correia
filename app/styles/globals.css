@@ -4,3 +4,9 @@
 @tailwindcss/forms;
 @tailwindcss/typographie;
 @tailwindcss/aspect-ratio;
+
+:root{
+    --bleu:#5952CA
+    
+}
+

@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'bleu': '#5952CA'
+        bleu: 'var(--bleu)'
    
   },
   borderWidth: {

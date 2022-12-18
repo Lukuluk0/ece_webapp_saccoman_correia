@@ -41,7 +41,7 @@ const Update = ({projects}) => {
     const skill=data.skills.toString().split(",")
     const {error} = await supabase
     .from('projects')
-    .update({title:data.title, description:data.description, features: feature, skills: skill, languages: language, pictures:["",""]})
+    .update({title:data.title, description:data.description, features: feature, skills: skill, languages: language})
     .eq('id',data.id)
     if(error){
       setMessage(<div>

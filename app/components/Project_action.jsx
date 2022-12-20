@@ -23,11 +23,11 @@ const Project_action = (props) =>
     if((user === undefined))
     {
         return <div className="text-center">
-            <p>If you want to discuss about this project, you can post a comment</p>
+            <p>If you want to discuss about this project, you must be authenticated</p>
         </div>
         
     } 
-    if(props.author !== user.id)
+    if(props.author !== user?.id)
     {
         return <div className="text-center">
             <p>If you want to discuss about this project, you can post a comment</p>

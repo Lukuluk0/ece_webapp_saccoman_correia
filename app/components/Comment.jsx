@@ -11,6 +11,15 @@ const Comment = (props) => {
     const supabase = useSupabaseClient()
     const router= useRouter()
     const [data, setData] = useState({...props.comm})
+
+    const Delete = async function (e) {
+        e.preventDefault()
+        const {error} = await supabase
+            .from('comments')
+            .delete()
+            .eq('id',props.comm.id)
+            router.reload()
+    }
   
 
 
@@ -47,7 +56,7 @@ const Comment = (props) => {
                             >
                                 Update
                             </button>
-                            <button onClick={()=> console.log(data?.comment)}className="bg-gray-800 text-white active:bg-bleu font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                            <button onClick={Delete}className="bg-gray-800 text-white active:bg-bleu font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
                             >
                                 Delete
                             </button>

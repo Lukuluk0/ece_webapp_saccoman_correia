@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import UserContext from './UserContext'
+import Router, { useRouter } from 'next/router'
 
 const Comment = (props) =>
 {
@@ -8,21 +9,17 @@ const Comment = (props) =>
     const [message, setMessage] = useState(null)
     const { user } = useContext(UserContext)
     const [data, setData] = useState({})
+    const router = useRouter()
     const onSubmit = async function(e){
         e.preventDefault()
         console.log(data.comment)
         const { error } = await supabase
           .from('comments')
-          .insert({user_id: user.id, content: data.comment, project_id: props.pid})
+          .insert({user_id: user.id, content: data.comment, project_id: props.pid,email:user.email})
         if(error){
           setMessage('Make sure that you are connected')
         }else{
-          setMessage(
-            <div>
-              <h2 className="text-center mt-3">Confirmation</h2>
-              <p>Thank you for your comment</p>
-            </div>
-          )
+          router.reload()
         }
       }
     return ( 

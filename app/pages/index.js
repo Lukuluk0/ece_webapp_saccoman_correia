@@ -5,6 +5,7 @@ import Head from'next/head'
 export default function Home() {
   //regler le padding général et responsive menu hamburger
   return (
+    <div className="bg-slate-200">
      <Layout>
       <Head>
         <title>WebTech - Home</title>
@@ -56,7 +57,7 @@ export default function Home() {
         </div>
       </main>
      </Layout>
-   
+   </div>
   )
 }
 

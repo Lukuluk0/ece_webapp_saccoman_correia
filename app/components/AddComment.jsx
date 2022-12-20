@@ -26,9 +26,9 @@ const Comment = (props) =>
         }
       }
     return ( 
-    <div className="md:px-20 md:pt-10 px-2 py-4">
+    <>
     <form onSubmit={onSubmit}>
-    <div className="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+    <div className=" my-4 mx-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
        <div className="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
            <label class="sr-only">Your comment</label>
            <textarea
@@ -63,7 +63,7 @@ const Comment = (props) =>
           </div>
         </div>
       }
-      </div>
+     </>
     )
 }
 

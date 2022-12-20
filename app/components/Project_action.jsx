@@ -12,6 +12,10 @@ const Project_action = (props) =>
 
     const Delete = async function (e) {
         e.preventDefault()
+        const {error1} = await supabase
+            .from('comments')
+            .delete()
+            .eq('project_id',props.pid)
         const {error} = await supabase
             .from('projects')
             .delete()

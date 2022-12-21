@@ -76,6 +76,7 @@ export default function Contact() {
   }, [user, loading, router])
   
   const onClickLogout = function() {
+    document.documentElement.style.setProperty('--bleu', '#5952CA');
     logout()
   }
 

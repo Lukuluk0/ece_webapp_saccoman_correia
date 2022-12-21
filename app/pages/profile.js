@@ -1,14 +1,42 @@
 import { useRouter } from 'next/router'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect,useState } from 'react'
 import Head from 'next/head'
 import Layout from '../components/Layout.jsx'
 import UserContext from '../components/UserContext'
 import { useTheme } from "next-themes"
+import { useSupabaseClient } from "@supabase/auth-helpers-react"
 
 export default function Contact() {
+  const supabase = useSupabaseClient()
   const { user, logout, loading } = useContext(UserContext)
   const router = useRouter()
-  const r = document.querySelector(':root')
+  //const r = document.querySelector(':root')
+  //const rs = getComputedStyle(document.documentElement).getPropertyValue('--bleu')
+  const [colour,setColor] = useState()
+  
+
+  const setColour = async () =>{
+    const {data,error} = await supabase
+    .from('profiles')
+    .select('color')
+    .eq('id',user?.id)
+    .limit(1)
+    .single()
+    console.log(data?.color)
+    
+    if(user){
+      const color = getComputedStyle(document.documentElement).getPropertyValue('--bleu')
+      console.log(`--bleu: ${color}`);
+      setColor(data?.color)
+}
+
+  }
+
+  useEffect(() => {
+    setColor(getComputedStyle(document.documentElement).getPropertyValue('--bleu'))
+    
+  }, [user])
+
 
   const {systemTheme,theme,setTheme} = useTheme()
   const renderThemeChanger =() =>{
@@ -19,17 +47,26 @@ export default function Contact() {
        </>
        //
     }else{
-      return <><input value='Blue' type="button" className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-2 ring-gray-900/10 hover:ring-gray-900/30 dark:bg-gray-800 dark:text-gray-100"  onClick={changeCSSblue}/><br/>
-       <input value='Pink' type="button" className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-2 ring-gray-900/10 hover:ring-gray-900/30 dark:bg-gray-800 dark:text-gray-100"  onClick={changeCSSpink}/></>    }
+      return <><input type="color"
+               value={colour}
+               id="color" onChange={e => { setColor(e.currentTarget.value)}}/><br/>
+               <input type='button' className ='bg-bleu hover:bg-gray-700 content-between text-white font-bold py-2 px-4 rounded' value='Save' onClick={saveColor}/></>    }
        //
   }
 
-  const changeCSSpink= () => {
-    r.style.setProperty('--bleu', '#ff49db')
+  const saveColor = async () =>{
+    const {error} = await supabase
+    .from('profiles')
+    .update({color:colour.toString()})
+    .eq('id',user.id)
+    router.reload()
   }
-  const changeCSSblue= () => {
-    r.style.setProperty('--bleu', '#5952CA')
-  }
+
+
+
+// r.style.setProperty('--bleu', color)
+ 
+
 
   
   useEffect(() => {
@@ -41,6 +78,9 @@ export default function Contact() {
   const onClickLogout = function() {
     logout()
   }
+
+
+  
   return (
     <Layout>
       <Head>

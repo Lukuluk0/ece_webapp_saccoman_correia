@@ -94,11 +94,10 @@ const Creation = () => {
       <h2 className="text-center text-xl font-bold">Publicate a new project</h2>
       <div className="mt-5 md:col-span-2 md:mt-0">
         <form onSubmit={onSubmit}>
-          <div className="shadow sm:overflow-hidden sm:rounded-md">
-            <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
+            <div className="space-y-6 bg-white px-4 py-5 sm:p-6 bg-slate-200 dark:bg-gray-900">
               <div className="grid grid-cols-3 gap-6">
                 <div className="col-span-3 sm:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white">
                     Title
                   </label>
                   <div className="mt-1 ">
@@ -116,7 +115,7 @@ const Creation = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
                   Description
                 </label>
                 <div className="mt-1">
@@ -130,12 +129,12 @@ const Creation = () => {
                     required="required"
                   />
                 </div>
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="mt-2 text-sm text-gray-500 dark:text-white">
                   Brief description of your project
                 </p>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
                   Feature
                 </label>
                 <div className="mt-1">
@@ -149,12 +148,12 @@ const Creation = () => {
                     required="required"
                   />
                 </div>
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="mt-2 text-sm text-gray-500 dark:text-white">
                   Enumerate features, separate each with a semicolon !
                 </p>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
                   Skills
                 </label>
                 <div className="mt-1">
@@ -168,13 +167,13 @@ const Creation = () => {
                     required="required"
                   />
                 </div>
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="mt-2 text-sm text-gray-500 dark:text-white">
                   Enumerate skills, separate each with a semicolon !
                 </p>
               </div>
               <div className="grid grid-cols-3 gap-6">
                 <div className="col-span-3 sm:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white">
                     Languages and framework
                   </label>
                   <div className="mt-1 ">
@@ -193,7 +192,7 @@ const Creation = () => {
             
             <div className="grid grid-cols-3 gap-6">
                 <div className="col-span-3 sm:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white">
                     Title of the pictures
                   </label>
                   <div className="mt-1 ">
@@ -207,14 +206,14 @@ const Creation = () => {
                       required="required"
                     />
                   </div>
-                  <p className="mt-2 text-sm text-gray-500">
+                  <p className="mt-2 text-sm text-gray-500 dark:text-white">
                     Give a name, dont put any forbidden characters like * or space !
                   </p>
                 </div>
               </div>
            
-                    <label className="block text-sm font-medium text-gray-700">Cover photo</label>
-                    <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-white">Cover photo</label>
+                    <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6 bg-white">
                       <div className="space-y-1 text-center">
                         <svg
                           className="mx-auto h-12 w-12 text-gray-400"
@@ -243,12 +242,12 @@ const Creation = () => {
                           </label>
                           <p className="pl-1">or drag and drop</p>
                         </div>
-                        <p className="text-xs text-gray-500">only PNG</p>
+                        <p className="text-xs text-gray-500 ">only PNG</p>
                       </div>
                       </div>
                       </div>
             
-            <div className="bg-gray-50 px-4 py-3 grid grid-cols-2 sm:px-6 md:gap-x-60 gap-x-10">
+            <div className=" px-4 py-3 grid grid-cols-2 sm:px-6 md:gap-x-60 gap-x-10 ">
               <button
                 className="inline-flex justify-center rounded-md border border-transparent bg-bleu py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 onClick={() => setDatas({})}
@@ -261,14 +260,14 @@ const Creation = () => {
                 Validate this form and saved in database
               </button>
             </div>
-          </div>
+          
         </form>
         {message &&
           <div
             aria-label="Overlow below the drawer dialog"
             className="fixed inset-0 bg-black/80 flex items-center justify-center"
             onClick={() => {setMessage(null)
-              router.push('/projects')}}
+              router.reload()}}
             role="dialog"
           >
             <div

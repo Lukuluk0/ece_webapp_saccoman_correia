@@ -66,10 +66,10 @@ const Update = ({projects}) => {
       <div className="mt-5 md:col-span-2 md:mt-0">
         <form onSubmit={onSubmit}>
           <div className="shadow sm:overflow-hidden sm:rounded-md">
-            <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
+            <div className="space-y-6 bg-white px-4 py-5 sm:p-6 bg-slate-200 dark:bg-gray-900">
               <div className="grid grid-cols-3 gap-6">
                 <div className="col-span-3 sm:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white">
                     Title
                   </label>
                   <div className="mt-1 ">
@@ -88,7 +88,7 @@ const Update = ({projects}) => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
                   Description
                 </label>
                 <div className="mt-1">
@@ -102,12 +102,12 @@ const Update = ({projects}) => {
                     required="required"
                   />
                 </div>
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="mt-2 text-sm text-gray-500 dark:text-white">
                   Brief description of your project
                 </p>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
                   Feature
                 </label>
                 <div className="mt-1">
@@ -121,12 +121,12 @@ const Update = ({projects}) => {
                     required="required"
                   />
                 </div>
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="mt-2 text-sm text-gray-500 dark:text-white">
                   Enumerate features, separate each with a comma !
                 </p>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
                   Skills
                 </label>
                 <div className="mt-1">
@@ -140,13 +140,13 @@ const Update = ({projects}) => {
                     required="required"
                   />
                 </div>
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="mt-2 text-sm text-gray-500 dark:text-white">
                   Enumerate skills, separate each with a comma !
                 </p>
               </div>
               <div className="grid grid-cols-3 gap-6">
                 <div className="col-span-3 sm:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white">
                     Languages and framework
                   </label>
                   <div className="mt-1 ">
@@ -155,12 +155,12 @@ const Update = ({projects}) => {
                       name="languages"
                       value={ !(data) ?data.my_value:data.languages}
                       onChange={e => setData({ ...data, ...{ languages: e.target.value } })}
-                      className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
+                      className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm "
                       placeholder="Next.js, Tailwinds, ..."
                       required="required"
                     />
                   </div>
-                  <p className="mt-2 text-sm text-gray-500">
+                  <p className="mt-2 text-sm text-gray-500 dark:text-white">
                     Enumerate, separate each with a comma !
                   </p>
                 </div>

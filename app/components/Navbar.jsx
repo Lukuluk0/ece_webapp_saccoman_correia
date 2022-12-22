@@ -6,8 +6,6 @@ import { useTheme } from "next-themes"
 import {MoonIcon,SunIcon} from '@heroicons/react/24/solid'
 
 
-import { INTERNALS } from "next/dist/server/web/spec-extension/request"
-
 const Navbar =()=>{
   const {systemTheme,theme,setTheme} = useTheme()
   const renderThemeChanger =() =>{

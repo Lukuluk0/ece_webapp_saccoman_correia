@@ -1,6 +1,6 @@
 import { supabase } from '../api/supabase'
 import Layout from '../../components/Layout'
-import Test_projectslist from '../../components/Test_projectslist'
+import Projectslist from '../../components/Projectslist'
 import Addproject from '../../components/Addproject'
 import Head from 'next/head'
 
@@ -14,7 +14,7 @@ export default function Projects({projects}) {
         <meta name="description" content="WebTech projects page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-       <Test_projectslist pprojects={projects}/>
+       <Projectslist pprojects={projects}/>
        <Addproject/>
     </Layout>
    )

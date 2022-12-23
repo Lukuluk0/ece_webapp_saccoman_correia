@@ -17,7 +17,7 @@ const ListComment = (props) => {
                 .eq('project_id', props.pid)
             setComment(data)
         })()
-    }, [supabase])
+    }, [supabase, props.pid])
 
 
 

@@ -39,7 +39,7 @@ const Comment = (props) => {
       }
 
     if(edit === false){
-    return (<> <article className="px-6 py-3 text-base  rounded-lg dark:bg-gray-900">
+    return (<> <article className="px-6 py-3 text-base rounded-lg bg-gray-100 dark:bg-gray-900 ring-2 ring-gray-700/10">
                         <footer className="flex justify-between items-center mb-2">
                             <div className="flex items-center">
                                 <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
@@ -48,7 +48,7 @@ const Comment = (props) => {
                                 <p className="text-sm text-gray-600 dark:text-gray-400">{props.comm.created_at}</p>
                             </div>
                         </footer>
-                        <p className="text-gray-500 dark:text-gray-400">{props.comm.content}</p>
+                        <p className="text-gray-500 dark:text-white">{props.comm.content}</p>
                     </article>
                     {(user?.email === props.comm.email) ?
                         <>

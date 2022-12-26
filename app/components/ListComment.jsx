@@ -25,7 +25,7 @@ const ListComment = (props) => {
 
         <div>
             {comment?.map((comm) => (
-                <div key={comm.id}>
+                <div className="mt-3" key={comm.id}>
                     <Comment comm={comm} />
                     
 

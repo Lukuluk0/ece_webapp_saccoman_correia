@@ -12,7 +12,7 @@ const Project = ({project}) => {
         <Layout>
           <Infoarticle pproject={project}/>
           <Project_action author={project.creator_id} pid={project.id}></Project_action>
-          <div className="pt-2 md:mx-14 mx-6 md:mt-10 mt-5 bg-slate-200">
+          <div className="pt-2 md:mx-14 mx-6 md:mt-10 mt-5 bg-white">
           <AddComment pid={project.id}/>
           <ListComment pid={project.id}/>
           </div>

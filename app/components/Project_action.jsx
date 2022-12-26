@@ -26,21 +26,21 @@ const Project_action = (props) =>
     
     if((user === undefined))
     {
-        return <div className="text-center">
+        return <div className="text-center mt-12">
             <p>If you want to discuss about this project, you must be authenticated</p>
         </div>
         
     } 
     if(props.author !== user?.id)
     {
-        return <div className="text-center">
+        return <div className="text-center mt-12 ">
             <p>If you want to discuss about this project, you can post a comment</p>
         </div>
     }
       
         return <div className="mt-12 flex gap-x-4 justify-center">
         <Link href ={{pathname:'/projects/update',query:'id='+props.pid}}>
-        <button className="inline-block rounded-lg bg-bleu px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-bleu hover:bg-indigo-500 hover:ring-indigo-500"
+        <button className="inline-block rounded-lg bg-bleu px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-bleu hover:bg-gray-300 hover:ring-gray-300"
         >
           Update the project
         </button>

@@ -28,9 +28,10 @@ const Creation = () => {
         const url = "https://asjviolucgyqjhebdilt.supabase.co/storage/v1/object/public/avatars/imagedefault.png?"
         const feature=datas.features.split(";")
     const skill=datas.skills.split(";")
+    const language=datas.languages.split(";")
     const {error2} = await supabase
     .from('projects')
-    .insert({creator_id: user.id, title:datas.title, description:datas.description, features: feature, skills: skill, languages: datas.language, pictures: url})
+    .insert({creator_id: user.id, title:datas.title, description:datas.description, features: feature, skills: skill, languages: language, pictures: url})
     if(error2){
       setMessage(<div>
         <h2 className="text-center mt-3">Warning</h2>
@@ -67,10 +68,11 @@ const Creation = () => {
          const url=data.publicUrl
        const feature=datas.features.split(";")
     const skill=datas.skills.split(";")
+    const language=datas.languages.split(";")
    
     const {error2} = await supabase
     .from('projects')
-    .insert({creator_id: user.id, title:datas.title, description:datas.description, features: feature, skills: skill, languages: datas.language, pictures: url})
+    .insert({creator_id: user.id, title:datas.title, description:datas.description, features: feature, skills: skill, languages: language, pictures: url})
     if(error2){
       setMessage(<div>
         <h2 className="text-center mt-3">Warning</h2>
@@ -179,14 +181,17 @@ const Creation = () => {
                   <div className="mt-1 ">
                     <input
                       type="text"
-                      name="language"
+                      name="languages"
                       value={datas.my_value}
-                      onChange={e => setDatas({ ...datas, ...{ language: e.target.value } })}
+                      onChange={e => setDatas({ ...datas, ...{ languages: e.target.value } })}
                       className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
                       placeholder="Next.js, Tailwinds, ..."
                       required="required"
                     />
                   </div>
+                  <p className="mt-2 text-sm text-gray-500 dark:text-white">
+                  Enumerate languages and framework, separate each with a semicolon !
+                </p>
                 </div>
               </div>
             

@@ -20,6 +20,7 @@ const Project_action = (props) =>
             .from('projects')
             .delete()
             .eq('id',props.pid)
+            console.log(error)
             router.push("/projects/")
     }
     

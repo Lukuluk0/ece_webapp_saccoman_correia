@@ -22,7 +22,7 @@ const Project = ({project}) => {
 
 export default Project
 
-export async function getStaticProps(ctx) {
+export async function getServerSideProps(ctx) { // aremplacer potentiellement par getstaticprops mais il faut decommenter get static path si on fait ca
   let project = {}
   let { data, error, status } = await supabase
     .from('projects')
@@ -37,14 +37,14 @@ export async function getStaticProps(ctx) {
   };
 }
 
-export async function getStaticPaths(ctx) {
-  let projects = []
-  let { data, error, status } = await supabase
-    .from('projects')
-    .select(`id`)
-  if (!error) projects = data // handle errors
-  return {
-    paths: projects.map( project => `/projects/${project.id}`),
-    fallback: false
-  };
-}
+// export async function getStaticPaths(ctx) {
+//   let projects = []
+//   let { data, error, status } = await supabase
+//     .from('projects')
+//     .select(`id`)
+//   if (!error) projects = data // handle errors
+//   return {
+//     paths: projects.map( project => `/projects/${project.id}`),
+//     fallback: false
+//   };
+// }

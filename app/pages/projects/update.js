@@ -206,7 +206,7 @@ const Update = ({projects}) => {
 
 export default Update
 
-  export async function getStaticProps(ctx) {
+  export async function getServerSideProps(ctx) {
     let projects = []
     let { data, error, status } = await supabase
       .from('projects')

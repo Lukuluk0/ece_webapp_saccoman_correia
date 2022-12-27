@@ -1,10 +1,91 @@
-const UserForm = () =>{
-    return(
+import { useRouter } from 'next/router'
+import { useContext, useEffect, useState } from 'react'
+import { useSupabaseClient } from "@supabase/auth-helpers-react"
+import UserContext from '../components/UserContext'
+import { useTheme } from "next-themes"
 
-<div class="block p-6 rounded-lg shadow-lg bg-white max-w-md">
-            <form>
-              <div class="form-group mb-6">
-                <input type="text" class="form-control 
+
+const UserForm = () => {
+  const supabase = useSupabaseClient()
+  const { user, logout, loading } = useContext(UserContext)
+  const [dataUser, setData] = useState({})
+
+  const [colour, setColor] = useState()
+
+
+  //obsolete
+  const setUserData = async () => {
+    const { data, error } = await supabase
+      .from('profiles')
+      .select()
+      .eq('id', user?.id)
+      .limit(1)
+      .single()
+    
+
+    if (user) {
+      setData( { username: data?.username })
+    }
+
+  }
+  //
+  useEffect(() => {
+    setColor(getComputedStyle(document.documentElement).getPropertyValue('--bleu'))
+    setUserData()
+    
+  }, [user])
+
+
+  const { systemTheme, theme, setTheme } = useTheme()
+  const renderThemeChanger = () => {
+    const currentTheme = theme === 'system' ? systemTheme : theme
+
+    if (currentTheme == 'dark') {
+      return <><input value='Light' type="button" className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-2 ring-gray-900/10 hover:ring-gray-900/30 dark:bg-gray-800 dark:text-gray-100" onClick={() => setTheme('light')} /><br />
+      </>
+      //
+    } else {
+      return <><input type="color"
+      
+        value={colour}
+        id="color" onChange={e => { setColor(e.currentTarget.value) }} /><br />
+        </>
+    }
+    //
+  }
+
+  
+
+  const UpdateDB = async function (e) {
+    e.preventDefault()
+    console.log(user.id)
+    console.log(dataUser)
+    const { error } = await supabase
+      .from('profiles')
+      .update({ username: dataUser.username,color: colour.toString()  })
+      .eq('id', user?.id)
+    console.log(error)
+  }
+
+  return (<>
+    <div class="bg-gray-200 font-sans h-screen w-full flex flex-row justify-center items-center dark:bg-gray-800">
+      <div class="card w-30 mx-auto bg-white  shadow-xl hover:shadow dark:bg-gray-900 rounded-lg p-100">
+
+        <div class="text-center mt-2 text-3xl font-medium">{user?.email}</div>
+        <div class="text-center mt-2 font-light text-sm">id : {user?.id}</div>
+
+        <div class="px-6 text-center mt-2 font-light text-sm">
+          <p>
+            Hello! This is your profile page. You can change your username and your favorite color to navigate the site.
+          </p>
+        </div>
+        <hr class="mt-8" />
+        <form onSubmit={UpdateDB}>
+        <div class="form-group mb-6">
+          <input type="text"
+            value={!(dataUser) ? dataUser.my_value : dataUser.username}
+            onChange={e => setData({ ...dataUser, ...{ username: e.target.value } })}
+            class="form-control 
                 block 
                 w-full 
                 px-3 
@@ -21,61 +102,21 @@ const UserForm = () =>{
                 transition 
                 ease-in-out 
                 m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput7"
-                  placeholder="Name" />
-              </div>
-              <div class="form-group mb-6">
-                <input type="email" class="form-control block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput8"
-                  placeholder="Email address" />
-              </div>
-              <div class="form-group mb-6">
-                <textarea
-                  class="
-        form-control
-        block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-      "
-                  id="exampleFormControlTextarea13"
-                  rows="3"
-                  placeholder="Message"
-                ></textarea>
-              </div>
-              <div class="form-group form-check text-center mb-6">
-                <input type="checkbox"
-                  class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
-                  id="exampleCheck87" checked />
-                <label class="form-check-label inline-block text-gray-800" for="exampleCheck87">Send me a copy of this message</label>
-              </div>
-              <button type="submit" class="
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            placeholder="Userame" />
+        </div>
+       
+       
+        <div class="form-group form-check text-center mb-6">
+          {renderThemeChanger()}
+          <label class="form-check-label inline-block text-gray-800 dark:text-white" for="exampleCheck87">Select your favorite color</label>
+        </div>
+        
+        <button type="submit" class="
       w-full
       px-6
       py-2.5
-      bg-blue-600
+      bg-bleu
       text-white
       font-medium
       text-xs
@@ -83,15 +124,19 @@ const UserForm = () =>{
       uppercase
       rounded
       shadow-md
-      hover:bg-blue-700 hover:shadow-lg
-      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-      active:bg-blue-800 active:shadow-lg
+      hover:bg-bleu hover:shadow-lg
+      focus:bg-bleu focus:shadow-lg focus:outline-none focus:ring-0
+      active:bg-bleu active:shadow-lg
       transition
       duration-150
       ease-in-out">Send</button>
-            </form>
-          </div>
-)
+      </form>
+      </div>
+    </div>
+
+    
+  </>
+  )
 }
 
 

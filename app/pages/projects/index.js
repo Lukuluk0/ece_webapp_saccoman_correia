@@ -19,7 +19,7 @@ export default function Projects({projects}) {
     </Layout>
    )
   }
-  export async function getStaticProps(ctx) {
+  export async function getServerSideProps(ctx) {  // aremplacer potentiellement par getstaticprops
     let projects = []
     let { data, error, status } = await supabase
       .from('projects')

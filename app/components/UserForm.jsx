@@ -4,6 +4,7 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react"
 import UserContext from '../components/UserContext'
 import { useTheme } from "next-themes"
 import { Editor } from '@tinymce/tinymce-react';
+import Gravatar from 'react-gravatar'
 
 const UserForm = () => {
   const supabase = useSupabaseClient()
@@ -64,7 +65,7 @@ const UserForm = () => {
     <div class="bg-gray-200 font-sans h-screen w-full flex flex-row justify-center items-center dark:bg-gray-800">
       <div class="card w-30 mx-auto bg-white  shadow-xl hover:shadow dark:bg-gray-900 rounded-lg p-100">
 
-        <div class="text-center mt-2 text-3xl font-medium">{user?.email}</div>
+        <div class="text-center mt-2 text-3xl font-medium"><Gravatar email={user?.email} /></div>
         <div class="text-center mt-2 font-light text-sm">id : {user?.id}</div>
 
         <div class="px-6 text-center mt-2 font-light text-sm">

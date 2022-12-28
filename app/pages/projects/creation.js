@@ -104,7 +104,7 @@ const Creation = () => {
                     name="title"
                     value={datas.my_value}
                     onChange={e => setDatas({ ...datas, ...{ title: e.target.value } })}
-                    className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
+                    className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm dark:text-black"
                     placeholder="Webtech"
                     required="required"
                   />
@@ -121,7 +121,7 @@ const Creation = () => {
                   value={datas.my_value}
                   onChange={e => setDatas({ ...datas, ...{ description: e.target.value } })}
                   rows={3}
-                  className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm"
+                  className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm dark:text-black"
                   placeholder="My project ..."
                   required="required"
                 />
@@ -140,7 +140,7 @@ const Creation = () => {
                   value={datas.my_value}
                   onChange={e => setDatas({ ...datas, ...{ features: e.target.value } })}
                   rows={3}
-                  className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm"
+                  className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm dark:text-black"
                   placeholder="User connexion,..."
                   required="required"
                 />
@@ -159,7 +159,7 @@ const Creation = () => {
                   value={datas.my_value}
                   onChange={e => setDatas({ ...datas, ...{ skills: e.target.value } })}
                   rows={3}
-                  className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm"
+                  className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm dark:text-black"
                   placeholder="Project based on MVC model, ..."
                   required="required"
                 />
@@ -179,7 +179,7 @@ const Creation = () => {
                     name="languages"
                     value={datas.my_value}
                     onChange={e => setDatas({ ...datas, ...{ languages: e.target.value } })}
-                    className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
+                    className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm dark:text-black"
                     placeholder="Next.js, Tailwinds, ..."
                     required="required"
                   />
@@ -200,7 +200,7 @@ const Creation = () => {
                     name="titlepic"
                     value={datas.my_value}
                     onChange={e => setDatas({ ...datas, ...{ titlepic: e.target.value } })}
-                    className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
+                    className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm dark:text-black"
                     placeholder="Webtech"
                     required="required"
                   />

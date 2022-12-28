@@ -35,7 +35,7 @@ const Comment = (props) => {
   }
 
   if (edit === false) {
-    return (<> <article className="px-6 py-3 text-base rounded-lg bg-gray-100 dark:bg-gray-900 ring-2 ring-gray-700/10">
+    return (<div className='dark:bg-gray-800'> <article className="px-6 py-3 text-base rounded-lg bg-gray-100 dark:bg-gray-900 ring-2 ring-gray-700/10">
       <footer className="flex justify-between items-center mb-2">
         <div className="flex items-center">
           <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
@@ -60,9 +60,9 @@ const Comment = (props) => {
         :
         <></>
       }
-    </>)
+    </div>)
   } else {
-    return (<><form onSubmit={onSubmit}>
+    return (<div className='dark:bg-gray-800'><form onSubmit={onSubmit}>
       <div className=" my-4 mx-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
         <div className="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
           <label class="sr-only">Your comment</label>
@@ -83,7 +83,7 @@ const Comment = (props) => {
         </div>
       </div>
     </form>
-    </>)
+    </div>)
   }
 }
 

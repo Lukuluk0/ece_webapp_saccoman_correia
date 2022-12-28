@@ -19,7 +19,6 @@ const ListComment = (props) => {
     }, [supabase, props.pid])
 
     return (
-
         <div>
             {comment?.map((comm) => (
                 <div className="mt-3" key={comm.id}>

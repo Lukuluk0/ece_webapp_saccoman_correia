@@ -63,7 +63,7 @@ const Update = ({ projects }) => {
                       name="title"
                       value={!(data) ? data.my_value : data.title}
                       onChange={e => setData({ ...data, ...{ title: e.target.value } })}
-                      className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
+                      className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm dark:text-black"
                       placeholder="Webtech"
                       required="required"
                     />
@@ -80,7 +80,7 @@ const Update = ({ projects }) => {
                     value={!(data) ? data.my_value : data.description}
                     onChange={e => setData({ ...data, ...{ description: e.target.value } })}
                     rows={3}
-                    className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm"
+                    className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm dark:text-black"
                     placeholder="My project ..."
                     required="required"
                   />
@@ -99,7 +99,7 @@ const Update = ({ projects }) => {
                     value={!(data) ? data.my_value : data.features}
                     onChange={e => setData({ ...data, ...{ features: e.target.value } })}
                     rows={3}
-                    className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm"
+                    className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm dark:text-black"
                     placeholder="User connexion,..."
                     required="required"
                   />
@@ -118,7 +118,7 @@ const Update = ({ projects }) => {
                     value={!(data) ? data.my_value : data.skills}
                     onChange={e => setData({ ...data, ...{ skills: e.target.value } })}
                     rows={3}
-                    className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm"
+                    className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm dark:text-black"
                     placeholder="Project based on MVC model, ..."
                     required="required"
                   />
@@ -138,7 +138,7 @@ const Update = ({ projects }) => {
                       name="languages"
                       value={!(data) ? data.my_value : data.languages}
                       onChange={e => setData({ ...data, ...{ languages: e.target.value } })}
-                      className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm "
+                      className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm dark:text-black"
                       placeholder="Next.js, Tailwinds, ..."
                       required="required"
                     />
@@ -149,7 +149,7 @@ const Update = ({ projects }) => {
                 </div>
               </div>
             </div>
-            <div className="bg-gray-50 px-4 py-3 grid grid-cols-2 sm:px-6 md:gap-x-60 gap-x-10">
+            <div className="bg-gray-50 px-4 py-3 grid grid-cols-2 sm:px-6 md:gap-x-60 gap-x-10 dark:bg-gray-800">
               <button
                 className="inline-flex justify-center rounded-md border border-transparent bg-bleu py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
                 onClick={() => router.push('/projects/')}

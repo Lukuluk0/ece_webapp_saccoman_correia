@@ -8,8 +8,6 @@ const Project_action = (props) => {
     const router = useRouter()
     const { user } = useContext(UserContext)
 
-    console.log('PID : ' + props.pid)
-
     const Delete = async function (e) {
         e.preventDefault()
         const { error1 } = await supabase
@@ -44,7 +42,7 @@ const Project_action = (props) => {
             </button>
         </Link>
         <button onClick={Delete}
-            className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-2 ring-gray-900/10 hover:ring-gray-900/30"
+            className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-2 ring-gray-900/10 hover:ring-gray-900/30 dark:text-white dark:ring-white"
         >
             Delete the project
             <span className="text-black" aria-hidden="true"></span>

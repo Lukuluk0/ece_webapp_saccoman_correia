@@ -1,6 +1,12 @@
 # Blogging application - ECE Webtech project
 
-*presentation, introduction, ...*
+Nous vous présentons notre projet de portfolio web réalisé avec NextJS et une base de données Supabase.
+
+NextJS est une bibliothèque JavaScript basée sur React qui nous a permis de créer facilement des applications web universnelles, c'est-à-dire qui s'exécutent tout aussi bien côté serveur que côté client. Cela a donné de meilleures performances et une meilleure expérience utilisateur, en particulier sur les appareils mobiles.
+
+Pour gérer les données de notre portfolio, nous avons choisi d'utiliser Supabase, une plateforme qui offre un accès en temps réel à une base de données PostgreSQL via une API RESTful. Cela nous a permis de stocker et de gérer facilement les informations sur nos projets et nos compétences, et de les afficher dynamiquement sur notre site web grâce à NextJS.
+
+En utilisant NextJS et Supabase, nous avons pu créer un portfolio professionnel moderne et performant, qui met en valeur nos réalisations et nos compétences de manière attrayante et facilement accessible. Nous espérons que vous apprécierez la visite !
 
 ## Production
 

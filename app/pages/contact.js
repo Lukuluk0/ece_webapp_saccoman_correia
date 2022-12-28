@@ -3,20 +3,18 @@ import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import Head from 'next/head'
 import Layout from '../components/Layout'
 
-
 export default function Contact() {
   const supabase = useSupabaseClient()
   const [message, setMessage] = useState(null)
   const [datas, setDatas] = useState({})
-  const onSubmit = async function(e){
+  const onSubmit = async function (e) {
     e.preventDefault()
- 
     const { error } = await supabase
       .from('contacts')
-      .insert({firstname: datas.firstname, lastname: datas.lastname, email: datas.email, message: datas.message})
-    if(error){
+      .insert({ firstname: datas.firstname, lastname: datas.lastname, email: datas.email, message: datas.message })
+    if (error) {
       setMessage('Sorry, an unexpected error occured.')
-    }else{
+    } else {
       setMessage(
         <div>
           <h2 className="text-center mt-3">Confirmation</h2>
@@ -35,101 +33,99 @@ export default function Contact() {
       <h1 className="text-center text-xl font-bold">Contact</h1>
       <div className="mt-5 md:col-span-2 md:mt-0">
         <form onSubmit={onSubmit}>
-            <div className="space-y-6 bg-white px-4 py-5 sm:p-6 bg-slate-200 dark:bg-gray-900">
-              <div className="grid grid-cols-3 gap-6">
-                <div className="col-span-3 md:col-span-1">
-                  <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                    First Name
-                  </label>
-                  <div className="mt-1 ">
-                    <input
-                      type="text"
-                      name="firstname"
-                      value={datas.my_value}
-                      onChange={e => setDatas({ ...datas, ...{ firstname: e.target.value } })}
-                      className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
-                      placeholder="Name"
-                      required="required"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-3 gap-6">
-                <div className="col-span-3 md:col-span-1">
-                  <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                    Last Name
-                  </label>
-                  <div className="mt-1 ">
-                    <input
-                      type="text"
-                      name="lastname"
-                      value={datas.my_value}
-                      onChange={e => setDatas({ ...datas, ...{ lastname: e.target.value } })}
-                      className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
-                      placeholder="surname"
-                      required="required"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="grid grid-cols-3 gap-6">
-                <div className="col-span-3 md:col-span-1">
-                  <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                    Email
-                  </label>
-                  <div className="mt-1 ">
-                    <input
-                      type="text"
-                      name="email"
-                      value={datas.my_value}
-                      onChange={e => setDatas({ ...datas, ...{ email: e.target.value } })}
-                      className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
-                      placeholder="azerty@gmail.com"
-                      required="required"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div>
+          <div className="space-y-6 bg-white px-4 py-5 sm:p-6 bg-slate-200 dark:bg-gray-900">
+            <div className="grid grid-cols-3 gap-6">
+              <div className="col-span-3 md:col-span-1">
                 <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                Message
+                  First Name
                 </label>
-                <div className="mt-1">
-                  <textarea
-                    name="skill"
-                    rows={6}
+                <div className="mt-1 ">
+                  <input
+                    type="text"
+                    name="firstname"
                     value={datas.my_value}
-                    onChange={e => setDatas({ ...datas, ...{ message: e.target.value } })}
-                    className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm"
-                    placeholder="I write about ..."
+                    onChange={e => setDatas({ ...datas, ...{ firstname: e.target.value } })}
+                    className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
+                    placeholder="Name"
                     required="required"
                   />
                 </div>
               </div>
+            </div>
+            <div className="grid grid-cols-3 gap-6">
+              <div className="col-span-3 md:col-span-1">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                  Last Name
+                </label>
+                <div className="mt-1 ">
+                  <input
+                    type="text"
+                    name="lastname"
+                    value={datas.my_value}
+                    onChange={e => setDatas({ ...datas, ...{ lastname: e.target.value } })}
+                    className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
+                    placeholder="surname"
+                    required="required"
+                  />
+                </div>
               </div>
-              
-              <button
-                className="mx-6 inline-block rounded-lg bg-bleu px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-bleu hover:bg-gray-300 hover:ring-gray-300"
-              >
-                Send your message
-              </button>
-        </form>
-      {message &&
-        <div
-          aria-label="Overlow below the drawer dialog"
-          className="fixed inset-0 bg-black/80 flex items-center justify-center"
-          onClick={() => setMessage(null)}
-          role="dialog"
-        >
-          <div
-            aria-label="Alert pane"
-            className="max-h-[90vh] max-w-[95vw] overflow-auto p-4 prose bg-white"
-          >
-            {message}
+            </div>
+            <div className="grid grid-cols-3 gap-6">
+              <div className="col-span-3 md:col-span-1">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                  Email
+                </label>
+                <div className="mt-1 ">
+                  <input
+                    type="text"
+                    name="email"
+                    value={datas.my_value}
+                    onChange={e => setDatas({ ...datas, ...{ email: e.target.value } })}
+                    className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
+                    placeholder="azerty@gmail.com"
+                    required="required"
+                  />
+                </div>
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                Message
+              </label>
+              <div className="mt-1">
+                <textarea
+                  name="skill"
+                  rows={6}
+                  value={datas.my_value}
+                  onChange={e => setDatas({ ...datas, ...{ message: e.target.value } })}
+                  className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm"
+                  placeholder="I write about ..."
+                  required="required"
+                />
+              </div>
+            </div>
           </div>
-        </div>
-      }
+          <button
+            className="mx-6 inline-block rounded-lg bg-bleu px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-bleu hover:bg-gray-300 hover:ring-gray-300"
+          >
+            Send your message
+          </button>
+        </form>
+        {message &&
+          <div
+            aria-label="Overlow below the drawer dialog"
+            className="fixed inset-0 bg-black/80 flex items-center justify-center"
+            onClick={() => setMessage(null)}
+            role="dialog"
+          >
+            <div
+              aria-label="Alert pane"
+              className="max-h-[90vh] max-w-[95vw] overflow-auto p-4 prose bg-white"
+            >
+              {message}
+            </div>
+          </div>
+        }
       </div>
     </Layout>
   )

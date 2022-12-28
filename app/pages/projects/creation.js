@@ -4,7 +4,6 @@ import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import UserContext from '../../components/UserContext'
 import { useRouter } from 'next/router'
 
-
 const Creation = () => {
   const router = useRouter()
   const supabase = useSupabaseClient()
@@ -13,266 +12,260 @@ const Creation = () => {
   const [message, setMessage] = useState(null)
   const { user } = useContext(UserContext)
   const onSubmit = async function (e) {
-    
-  e.preventDefault()
-  if (Object.keys(datas).length === 0) {
-    setMessage(
+
+    e.preventDefault()
+    if (Object.keys(datas).length === 0) {
+      setMessage(
         <div>
           <h2 className="text-center mt-3">Confirmation</h2>
           <p>Your form is canceled</p>
         </div>
       )
     }
-    if(file === null)
-    {
-        const url = "https://asjviolucgyqjhebdilt.supabase.co/storage/v1/object/public/avatars/imagedefault.png?"
-        const feature=datas.features.split(";")
-    const skill=datas.skills.split(";")
-    const language=datas.languages.split(";")
-    const {error2} = await supabase
-    .from('projects')
-    .insert({creator_id: user.id, title:datas.title, description:datas.description, features: feature, skills: skill, languages: language, pictures: url})
-    if(error2){
-      setMessage(<div>
-        <h2 className="text-center mt-3">Warning</h2>
-        <p>An error occured, try again please or make sure the contained is proper</p>
-      </div>)
-    }else{
-      setMessage(
-        <div>
-          <h2 className="text-center mt-3">Confirmation</h2>
-          <p>Thank you for your contribution</p>
-        </div>
-      )
-    }
+    if (file === null) {
+      const url = "https://asjviolucgyqjhebdilt.supabase.co/storage/v1/object/public/avatars/imagedefault.png?"
+      const feature = datas.features.split(";")
+      const skill = datas.skills.split(";")
+      const language = datas.languages.split(";")
+      const { error2 } = await supabase
+        .from('projects')
+        .insert({ creator_id: user.id, title: datas.title, description: datas.description, features: feature, skills: skill, languages: language, pictures: url })
+      if (error2) {
+        setMessage(<div>
+          <h2 className="text-center mt-3">Warning</h2>
+          <p>An error occured, try again please or make sure the contained is proper</p>
+        </div>)
+      } else {
+        setMessage(
+          <div>
+            <h2 className="text-center mt-3">Confirmation</h2>
+            <p>Thank you for your contribution</p>
+          </div>
+        )
       }
-      else{
-      const tpic= datas.titlepic + ".png"
+    }
+    else {
+      const tpic = datas.titlepic + ".png"
       const { error1 } = await supabase
-      .storage
-      .from('avatars')
-      .upload(tpic, file, {
-        cacheControl: '3600',
-        upsert: false
-      })
-      if(error1){
+        .storage
+        .from('avatars')
+        .upload(tpic, file, {
+          cacheControl: '3600',
+          upsert: false
+        })
+      if (error1) {
         setMessage(<div>
           <h2 className="text-center mt-3">Warning</h2>
           <p>An error occured, try again please or make sure the title of your uploaded picture is proper</p>
         </div>)
       }
-         const { data } = await supabase
-         .storage
-         .from('avatars')
-         .getPublicUrl(tpic)
-         const url=data.publicUrl
-       const feature=datas.features.split(";")
-    const skill=datas.skills.split(";")
-    const language=datas.languages.split(";")
-   
-    const {error2} = await supabase
-    .from('projects')
-    .insert({creator_id: user.id, title:datas.title, description:datas.description, features: feature, skills: skill, languages: language, pictures: url})
-    if(error2){
-      setMessage(<div>
-        <h2 className="text-center mt-3">Warning</h2>
-        <p>An error occured, try again please or make sure the contained is proper</p>
-      </div>)
-    }else{
-      setMessage(
-        <div>
-          <h2 className="text-center mt-3">Confirmation</h2>
-          <p>Thank you for your contribution</p>
-        </div>
-      )
+      const { data } = await supabase
+        .storage
+        .from('avatars')
+        .getPublicUrl(tpic)
+      const url = data.publicUrl
+      const feature = datas.features.split(";")
+      const skill = datas.skills.split(";")
+      const language = datas.languages.split(";")
+
+      const { error2 } = await supabase
+        .from('projects')
+        .insert({ creator_id: user.id, title: datas.title, description: datas.description, features: feature, skills: skill, languages: language, pictures: url })
+      if (error2) {
+        setMessage(<div>
+          <h2 className="text-center mt-3">Warning</h2>
+          <p>An error occured, try again please or make sure the contained is proper</p>
+        </div>)
+      } else {
+        setMessage(
+          <div>
+            <h2 className="text-center mt-3">Confirmation</h2>
+            <p>Thank you for your contribution</p>
+          </div>
+        )
+      }
     }
-      
   }
-  
-} 
-  
+
   return (
     <Layout>
       <h2 className="text-center text-xl font-bold">Publicate a new project</h2>
       <div className="mt-5 md:col-span-2 md:mt-0">
         <form onSubmit={onSubmit}>
-            <div className="space-y-6 bg-white px-4 py-5 sm:p-6 bg-slate-200 dark:bg-gray-900">
-              <div className="grid grid-cols-3 gap-6">
-                <div className="col-span-3 sm:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                    Title
-                  </label>
-                  <div className="mt-1 ">
-                    <input
-                      type="text"
-                      name="title"
-                      value={datas.my_value}
-                      onChange={e => setDatas({ ...datas, ...{ title: e.target.value } })}
-                      className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
-                      placeholder="Webtech"
-                      required="required"
-                    />
-                  </div>
+          <div className="space-y-6 bg-white px-4 py-5 sm:p-6 bg-slate-200 dark:bg-gray-900">
+            <div className="grid grid-cols-3 gap-6">
+              <div className="col-span-3 sm:col-span-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                  Title
+                </label>
+                <div className="mt-1 ">
+                  <input
+                    type="text"
+                    name="title"
+                    value={datas.my_value}
+                    onChange={e => setDatas({ ...datas, ...{ title: e.target.value } })}
+                    className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
+                    placeholder="Webtech"
+                    required="required"
+                  />
                 </div>
               </div>
-
-              <div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                Description
+              </label>
+              <div className="mt-1">
+                <textarea
+                  name="description"
+                  value={datas.my_value}
+                  onChange={e => setDatas({ ...datas, ...{ description: e.target.value } })}
+                  rows={3}
+                  className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm"
+                  placeholder="My project ..."
+                  required="required"
+                />
+              </div>
+              <p className="mt-2 text-sm text-gray-500 dark:text-white">
+                Brief description of your project
+              </p>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                Feature
+              </label>
+              <div className="mt-1">
+                <textarea
+                  name="features"
+                  value={datas.my_value}
+                  onChange={e => setDatas({ ...datas, ...{ features: e.target.value } })}
+                  rows={3}
+                  className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm"
+                  placeholder="User connexion,..."
+                  required="required"
+                />
+              </div>
+              <p className="mt-2 text-sm text-gray-500 dark:text-white">
+                Enumerate features, separate each with a semicolon !
+              </p>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                Skills
+              </label>
+              <div className="mt-1">
+                <textarea
+                  name="skills"
+                  value={datas.my_value}
+                  onChange={e => setDatas({ ...datas, ...{ skills: e.target.value } })}
+                  rows={3}
+                  className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm"
+                  placeholder="Project based on MVC model, ..."
+                  required="required"
+                />
+              </div>
+              <p className="mt-2 text-sm text-gray-500 dark:text-white">
+                Enumerate skills, separate each with a semicolon !
+              </p>
+            </div>
+            <div className="grid grid-cols-3 gap-6">
+              <div className="col-span-3 sm:col-span-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                  Description
+                  Languages and framework
                 </label>
-                <div className="mt-1">
-                  <textarea
-                    name="description"
+                <div className="mt-1 ">
+                  <input
+                    type="text"
+                    name="languages"
                     value={datas.my_value}
-                    onChange={e => setDatas({ ...datas, ...{ description: e.target.value } })}
-                    rows={3}
-                    className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm"
-                    placeholder="My project ..."
+                    onChange={e => setDatas({ ...datas, ...{ languages: e.target.value } })}
+                    className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
+                    placeholder="Next.js, Tailwinds, ..."
                     required="required"
                   />
                 </div>
                 <p className="mt-2 text-sm text-gray-500 dark:text-white">
-                  Brief description of your project
-                </p>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                  Feature
-                </label>
-                <div className="mt-1">
-                  <textarea
-                    name="features"
-                    value={datas.my_value}
-                    onChange={e => setDatas({ ...datas, ...{ features: e.target.value } })}
-                    rows={3}
-                    className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm"
-                    placeholder="User connexion,..."
-                    required="required"
-                  />
-                </div>
-                <p className="mt-2 text-sm text-gray-500 dark:text-white">
-                  Enumerate features, separate each with a semicolon !
-                </p>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                  Skills
-                </label>
-                <div className="mt-1">
-                  <textarea
-                    name="skills"
-                    value={datas.my_value}
-                    onChange={e => setDatas({ ...datas, ...{ skills: e.target.value } })}
-                    rows={3}
-                    className=" block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-bleu focus:bleu sm:text-sm"
-                    placeholder="Project based on MVC model, ..."
-                    required="required"
-                  />
-                </div>
-                <p className="mt-2 text-sm text-gray-500 dark:text-white">
-                  Enumerate skills, separate each with a semicolon !
-                </p>
-              </div>
-              <div className="grid grid-cols-3 gap-6">
-                <div className="col-span-3 sm:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                    Languages and framework
-                  </label>
-                  <div className="mt-1 ">
-                    <input
-                      type="text"
-                      name="languages"
-                      value={datas.my_value}
-                      onChange={e => setDatas({ ...datas, ...{ languages: e.target.value } })}
-                      className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
-                      placeholder="Next.js, Tailwinds, ..."
-                      required="required"
-                    />
-                  </div>
-                  <p className="mt-2 text-sm text-gray-500 dark:text-white">
                   Enumerate languages and framework, separate each with a semicolon !
                 </p>
-                </div>
               </div>
-            
-            <div className="grid grid-cols-3 gap-6">
-                <div className="col-span-3 sm:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                    Title of the pictures
-                  </label>
-                  <div className="mt-1 ">
-                    <input
-                      type="text"
-                      name="titlepic"
-                      value={datas.my_value}
-                      onChange={e => setDatas({ ...datas, ...{ titlepic: e.target.value } })}
-                      className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
-                      placeholder="Webtech"
-                      required="required"
-                    />
-                  </div>
-                  <p className="mt-2 text-sm text-gray-500 dark:text-white">
-                    Give a name, dont put any forbidden characters like * or space !
-                  </p>
-                </div>
-              </div>
-           
-                    <label className="block text-sm font-medium text-gray-700 dark:text-white">Cover photo</label>
-                    <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6 bg-white">
-                      <div className="space-y-1 text-center">
-                        <svg
-                          className="mx-auto h-12 w-12 text-gray-400"
-                          stroke="currentColor"
-                          fill="none"
-                          viewBox="0 0 48 48"
-                          aria-hidden="true"
-                        >
-                          <path
-                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                            strokeWidth={2}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                        <div className="flex text-sm text-gray-600">
-                          <label
-                            className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500"
-                          >
-                            <span>Upload a file</span>
-                            <input 
-                            name="file-upload" 
-                            type="file" 
-                            onChange={(e) => setFile(e.target.files[0])}
-                            className="sr-only" />
-                          </label>
-                          <p className="pl-1">or drag and drop</p>
-                        </div>
-                        <p className="text-xs text-gray-500 ">only PNG</p>
-                      </div>
-                      </div>
-                      </div>
-            
-            <div className=" px-4 py-3 grid grid-cols-2 sm:px-6 md:gap-x-60 gap-x-10 ">
-              <button
-                className="inline-flex justify-center rounded-md border border-transparent bg-bleu py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
-                onClick={() => setDatas({})}
-              >
-                Cancel this form
-              </button>
-              <button
-                className="inline-flex justify-center rounded-md border border-transparent bg-bleu py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
-              >
-                Validate this form and saved in database
-              </button>
             </div>
-          
+            <div className="grid grid-cols-3 gap-6">
+              <div className="col-span-3 sm:col-span-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                  Title of the pictures
+                </label>
+                <div className="mt-1 ">
+                  <input
+                    type="text"
+                    name="titlepic"
+                    value={datas.my_value}
+                    onChange={e => setDatas({ ...datas, ...{ titlepic: e.target.value } })}
+                    className="block w-full flex-1 rounded-md border-gray-300 border-2 focus:border-bleu focus:ring-bleu sm:text-sm"
+                    placeholder="Webtech"
+                    required="required"
+                  />
+                </div>
+                <p className="mt-2 text-sm text-gray-500 dark:text-white">
+                  Give a name, dont put any forbidden characters like * or space !
+                </p>
+              </div>
+            </div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-white">Cover photo</label>
+            <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6 bg-white">
+              <div className="space-y-1 text-center">
+                <svg
+                  className="mx-auto h-12 w-12 text-gray-400"
+                  stroke="currentColor"
+                  fill="none"
+                  viewBox="0 0 48 48"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <div className="flex text-sm text-gray-600">
+                  <label
+                    className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500"
+                  >
+                    <span>Upload a file</span>
+                    <input
+                      name="file-upload"
+                      type="file"
+                      onChange={(e) => setFile(e.target.files[0])}
+                      className="sr-only" />
+                  </label>
+                  <p className="pl-1">or drag and drop</p>
+                </div>
+                <p className="text-xs text-gray-500 ">only PNG</p>
+              </div>
+            </div>
+          </div>
+          <div className=" px-4 py-3 grid grid-cols-2 sm:px-6 md:gap-x-60 gap-x-10 ">
+            <button
+              className="inline-flex justify-center rounded-md border border-transparent bg-bleu py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
+              onClick={() => setDatas({})}
+            >
+              Cancel this form
+            </button>
+            <button
+              className="inline-flex justify-center rounded-md border border-transparent bg-bleu py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
+            >
+              Validate this form and saved in database
+            </button>
+          </div>
         </form>
         {message &&
           <div
             aria-label="Overlow below the drawer dialog"
             className="fixed inset-0 bg-black/80 flex items-center justify-center"
-            onClick={() => {setMessage(null)
-              router.reload()}}
+            onClick={() => {
+              setMessage(null)
+              router.reload()
+            }}
             role="dialog"
           >
             <div
@@ -285,7 +278,6 @@ const Creation = () => {
         }
       </div>
     </Layout>
-
   )
 }
 

@@ -14,20 +14,20 @@ export default function Contact() {
       </Head>
       <div class="flex bg-white shadow-lg rounded-lg mx-4 md:mx-auto my-56 max-w-md md:max-w-2xl content-center ">
         <div class="flex items-start px-4 py-6">
-        <div class="">
-          <Gravatar class="w-12 h-12 rounded-full object-cover mr-4 shadow" email="saccoman.lu@gmail.com" />
           <div class="">
-            <div class="flex items-center justify-between">
-              <h2 class="text-lg font-semibold text-gray-900 -mt-1">Lucas Saccoman </h2>
+            <Gravatar class="w-12 h-12 rounded-full object-cover mr-4 shadow" email="saccoman.lu@gmail.com" />
+            <div class="">
+              <div class="flex items-center justify-between">
+                <h2 class="text-lg font-semibold text-gray-900 -mt-1">Lucas Saccoman </h2>
+              </div>
             </div>
-          </div>
-          <br/>
-          <Gravatar class="w-12 h-12 rounded-full object-cover mr-4 shadow" email="alexandre.correia@edu.ece.fr" />
-          <div class="">
-            <div class="flex items-center justify-between">
-              <h2 class="text-lg font-semibold text-gray-900 -mt-1">Alexandre Correia </h2>
+            <br />
+            <Gravatar class="w-12 h-12 rounded-full object-cover mr-4 shadow" email="alexandre.correia@edu.ece.fr" />
+            <div class="">
+              <div class="flex items-center justify-between">
+                <h2 class="text-lg font-semibold text-gray-900 -mt-1">Alexandre Correia </h2>
+              </div>
             </div>
-          </div>
           </div>
           <p class="text-gray-700">_</p>
           <p class="mt-3 text-gray-700 text-sm">
@@ -39,8 +39,6 @@ export default function Contact() {
           </p>
           <div class="mt-4 flex items-center">
           </div>
-          
-
         </div>
       </div>
     </Layout>

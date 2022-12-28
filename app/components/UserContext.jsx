@@ -12,17 +12,17 @@ export function UserContextProvider({
   const supabaseUser = useUser()
   const [user, setUser] = useState()
   const [loading, setLoading] = useState(true)
-  useEffect(function() {
+  useEffect(function () {
     if (supabaseUser) {
-      setUser({...supabaseUser})//,theme:"light"
+      setUser({ ...supabaseUser })//,theme:"light"
       setLoading(false)
-    } 
+    }
   }, [supabaseUser])
   return (
     <UserContext.Provider
       value={{
         user: user,
-        logout: async function() {
+        logout: async function () {
           await supabaseClient.auth.signOut()
           setUser(null)
         }

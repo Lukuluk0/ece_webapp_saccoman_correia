@@ -5,24 +5,23 @@ import { supabase } from '../api/supabase'
 import AddComment from '../../components/AddComment'
 import ListComment from '../../components/ListComment'
 
-
-// pour valider SSG faire un npm run build
-const Project = ({project}) => {
-    return <>
-        <Layout>
-          <Infoarticle pproject={project}/>
-          <Project_action author={project.creator_id} pid={project.id}></Project_action>
-          <div className="pt-2 md:mx-14 mx-6 md:mt-10 mt-5 bg-white">
-          <AddComment pid={project.id}/>
-          <ListComment pid={project.id}/>
-          </div>
-        </Layout>
-        </>
+const Project = ({ project }) => {
+  return <>
+    <Layout>
+      <Infoarticle pproject={project} />
+      <Project_action author={project.creator_id} pid={project.id}></Project_action>
+      <div className="pt-2 md:mx-14 mx-6 md:mt-10 mt-5 bg-white">
+        <AddComment pid={project.id} />
+        <ListComment pid={project.id} />
+      </div>
+    </Layout>
+  </>
 };
 
 export default Project
 
-export async function getServerSideProps(ctx) { // aremplacer potentiellement par getstaticprops mais il faut decommenter get static path si on fait ca
+// a remplacer potentiellement par getstaticprops mais il faut decommenter get static path si on fait ca
+export async function getServerSideProps(ctx) {
   let project = {}
   let { data, error, status } = await supabase
     .from('projects')

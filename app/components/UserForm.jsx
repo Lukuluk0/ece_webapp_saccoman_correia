@@ -4,7 +4,6 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react"
 import UserContext from '../components/UserContext'
 import { useTheme } from "next-themes"
 
-
 const UserForm = () => {
   const supabase = useSupabaseClient()
   const { user, logout, loading } = useContext(UserContext)
@@ -12,8 +11,6 @@ const UserForm = () => {
 
   const [colour, setColor] = useState()
 
-
-  //obsolete
   const setUserData = async () => {
     const { data, error } = await supabase
       .from('profiles')
@@ -21,18 +18,16 @@ const UserForm = () => {
       .eq('id', user?.id)
       .limit(1)
       .single()
-    
-
     if (user) {
-      setData( { username: data?.username })
+      setData({ username: data?.username })
     }
 
   }
-  //
+
   useEffect(() => {
     setColor(getComputedStyle(document.documentElement).getPropertyValue('--bleu'))
     setUserData()
-    
+
   }, [user])
 
 
@@ -43,18 +38,14 @@ const UserForm = () => {
     if (currentTheme == 'dark') {
       return <><input value='Light' type="button" className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-2 ring-gray-900/10 hover:ring-gray-900/30 dark:bg-gray-800 dark:text-gray-100" onClick={() => setTheme('light')} /><br />
       </>
-      //
     } else {
       return <><input type="color"
-      
+
         value={colour}
         id="color" onChange={e => { setColor(e.currentTarget.value) }} /><br />
-        </>
+      </>
     }
-    //
   }
-
-  
 
   const UpdateDB = async function (e) {
     e.preventDefault()
@@ -62,7 +53,7 @@ const UserForm = () => {
     console.log(dataUser)
     const { error } = await supabase
       .from('profiles')
-      .update({ username: dataUser.username,color: colour.toString()  })
+      .update({ username: dataUser.username, color: colour.toString() })
       .eq('id', user?.id)
     console.log(error)
   }
@@ -81,38 +72,36 @@ const UserForm = () => {
         </div>
         <hr class="mt-8" />
         <form onSubmit={UpdateDB}>
-        <div class="form-group mb-6">
-          <input type="text"
-            value={!(dataUser) ? dataUser.my_value : dataUser.username}
-            onChange={e => setData({ ...dataUser, ...{ username: e.target.value } })}
-            class="form-control 
-                block 
-                w-full 
-                px-3 
-                py-1.5 
-                text-base 
-                font-normal 
-                text-gray-700 
-                bg-white 
-                bg-clip-padding 
-                border 
-                border-solid 
-                border-gray-300 
-                rounded 
-                transition 
-                ease-in-out 
+          <div class="form-group mb-6">
+            <input type="text"
+              value={!(dataUser) ? dataUser.my_value : dataUser.username}
+              onChange={e => setData({ ...dataUser, ...{ username: e.target.value } })}
+              class="form-control
+                block
+                w-full
+                px-3
+                py-1.5
+                text-base
+                font-normal
+                text-gray-700
+                bg-white
+                bg-clip-padding
+                border
+                border-soli
+                border-gray-300
+                rounded
+                transition
+                ease-in-out
                 m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-            placeholder="Userame" />
-        </div>
-       
-       
-        <div class="form-group form-check text-center mb-6">
-          {renderThemeChanger()}
-          <label class="form-check-label inline-block text-gray-800 dark:text-white" for="exampleCheck87">Select your favorite color</label>
-        </div>
-        
-        <button type="submit" class="
+              placeholder="Userame" />
+          </div>
+          <div class="form-group form-check text-center mb-6">
+            {renderThemeChanger()}
+            <label class="form-check-label inline-block text-gray-800 dark:text-white" for="exampleCheck87">Select your favorite color</label>
+          </div>
+
+          <button type="submit" class="
       w-full
       px-6
       py-2.5
@@ -130,15 +119,11 @@ const UserForm = () => {
       transition
       duration-150
       ease-in-out">Send</button>
-      </form>
+        </form>
       </div>
     </div>
-
-    
   </>
   )
 }
-
-
 
 export default UserForm

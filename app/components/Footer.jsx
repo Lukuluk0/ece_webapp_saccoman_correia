@@ -1,35 +1,27 @@
 import Link from "next/link"
 
-
-const Footer =() =>
-{
+const Footer = () => {
     return (
         <div>
-        <div className="mx-auto md:p-4 p-2 bg-bleu flex items-center justify-between dark:bg-gray-800 ">
-        <ul className="flex flex-wrap text-white dark:text-white ">
-        <li>
-            <h3 className="mr-6 hover:text-black text-l">Github</h3>
-        </li>
-        <li>
-            <h3 className="mr-6 hover:text-black text-l">Privacy Policy</h3>
-        </li>
-        <li>
-            <Link href='/about'>
-            <h3 className="mr-6 hover:text-black text-l invisible md:visible">About</h3>
-            </Link>
-        </li>
-        <li>
-        <Link href='/contact'>
-            <h3 className="mr-6 hover:text-black text-l invisible md:visible">Contact us</h3>
-            </Link>
-            </li>
-    </ul>
-    <span className="text-white  dark:white text-l ">
-    <a>© 2022 Webtech™. </a>
-    <a className="md:visible invisible">All Rights Reserved.</a>
-    </span>
-    </div>
-</div>
+            <div className="mx-auto md:p-4 p-2 bg-bleu flex items-center justify-between dark:bg-gray-800 ">
+                <ul className="flex flex-wrap text-white dark:text-white ">
+                    <li>
+                        <Link href='/about'>
+                            <h3 className="mr-6 hover:text-black text-l invisible md:visible">About</h3>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href='/contact'>
+                            <h3 className="mr-6 hover:text-black text-l invisible md:visible">Contact us</h3>
+                        </Link>
+                    </li>
+                </ul>
+                <span className="text-white  dark:white text-l ">
+                    <a>© 2022 Webtech™. </a>
+                    <a className="md:visible invisible">All Rights Reserved.</a>
+                </span>
+            </div>
+        </div>
     )
 }
 

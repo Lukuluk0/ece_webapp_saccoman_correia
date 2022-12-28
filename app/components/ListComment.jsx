@@ -1,7 +1,6 @@
 import { useSupabaseClient } from "@supabase/auth-helpers-react"
 import UserContext from './UserContext'
 import { useContext, useEffect, useState } from 'react'
-import Gravatar from 'react-gravatar'
 import Comment from './Comment'
 
 const ListComment = (props) => {
@@ -19,16 +18,12 @@ const ListComment = (props) => {
         })()
     }, [supabase, props.pid])
 
-
-
     return (
 
         <div>
             {comment?.map((comm) => (
                 <div className="mt-3" key={comm.id}>
                     <Comment comm={comm} />
-                    
-
                 </div>))}
         </div>
     )

@@ -45,15 +45,20 @@
 **Project management:**
 
 - Naming convention
-  - place your graduation and comments
+  - 2/2
+  - Nous avons respecté les conventions
 - Project structure
-  - place your graduation and comments
+  - 2/2
+  - Tout les fichier sont ordonnées
 - Git
-  - place your graduation and comments
+  - 2/2
+  - Utilisation des conventional commit
 - Code quality
-  - place your graduation and comments
+  - 4/4
+  - Les documents sont formattés et il n'y a pas de white spaces
 - Design, UX, and content
-  - place your graduation and comments
+  - 4/4
+  - Bonne utilisation de TailWindCSS et noustrouvons notre site plutot jolie
 
 **Application development:**
 

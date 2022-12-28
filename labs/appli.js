@@ -7,11 +7,11 @@ router.use((req,res,next) => {
     next()
 })
 router.get('/hello/user/:id', (req, res, next) => {
-    if (req.params.id === 'Alexandre' || req.params.id === 'Lucas') 
+    if (req.params.id === 'Alexandre' || req.params.id === 'Lucas')
     {
         res.sendFile(path.join(__dirname, '/profil.html'))
     }
-    else 
+    else
    {
     res.sendFile(path.join(__dirname, '/hello.html'))
   }})

@@ -14,8 +14,7 @@ export default function Home() {
       </Head>
      <main>
         <div className="relative px-6">
-          <div className="mx-auto max-w-4xl"> 
-            
+          <div className="mx-auto max-w-4xl">
             <Link href="/about">
               <div className="flex justify-center">
                 <div className="relative overflow-hidden rounded-full py-1.5 px-4 leading-6 ring-2 ring-gray-700/10 hover:ring-gray-700/20 dark:ring-white dark:hover:ring-gray-300/20 mt-10">

@@ -9,13 +9,12 @@ module.exports = {
     extend: {
       colors: {
         bleu: 'var(--bleu)'
-   
   },
   borderWidth: {
     DEFAULT: '3px'
   },
     },
-  }, 
+  },
   plugins: [
     require( 'tailwindcss-font-inter'),
     require('@tailwindcss/typography'),

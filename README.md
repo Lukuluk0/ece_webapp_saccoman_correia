@@ -4,12 +4,10 @@
 
 ## Production
 
-- Vercel URL: https://...
+- Vercel URL: <https://ece-webapp-saccoman-correia.vercel.app/>
 - Supabase project URL: <https://app.supabase.com/project/asjviolucgyqjhebdilt>
 
 ## Usage
-
-*how to start and use the application, run the tests, ...*
 
 - Clone this repository, from your local machine:
 
